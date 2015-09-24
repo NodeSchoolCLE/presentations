@@ -1,2 +1,2 @@
-# presentations
-Presentations created for NodeSchool Cleveland meetups
+# Presentations
+This repository contains presentations created for NodeSchool Cleveland meetups.
