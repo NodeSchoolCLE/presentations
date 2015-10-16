@@ -1,0 +1,19 @@
+
+
+
+.box {
+    border: 3px solid rgba(0, 0, 0, 0.75) !important;
+    border-radius: 10px;
+}
+
+section[data-background] h2{
+    color: white;
+}
+
+.emoji {
+    max-height: 50px !important;
+    max-width: 50px  !important;
+    border: none     !important;
+    background: none !important;
+    box-shadow: none !important;
+}

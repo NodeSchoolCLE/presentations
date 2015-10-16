@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>NodeSchool Cleveland - Promise It Won't Hurt</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../common/css/reveal.css">
+    <link rel="stylesheet" href="../common/css/theme/sky.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../common/lib/css/zenburn.css">
+
+    <style type="text/css">
+        /*.terminal { text-align: left; }
+         text editor styles */
+        .terminal {
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+            clear: both;
+            overflow: hidden;
+            -webkit-transition: all 0.5s ease-out;
+            -moz-transition: all 0.5s ease-out;
+            -ms-transition: all 0.5s ease-out;
+            -o-transition: all 0.5s ease-out;
+            transition: all 0.5s ease-out;
+        }
+
+        .terminal-title {
+            padding: 5px 0 !important;
+            font-family: "Lucida Grande", sans-serif !important;
+            font-size: 0.75em !important;
+            color: black;
+            text-align: center;
+            text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
+            background-color: #f8f8f8;
+            background-image: -webkit-linear-gradient(top, #e8e8e8, #bcbbbc);
+            background-image: -moz-linear-gradient(top, #e8e8e8, #bcbbbc);
+            background-image: linear-gradient(top, #e8e8e8, #bcbbbc);
+            box-shadow: inset rgba(255, 255, 255, 0.7) 0px 1px 1px;
+            border-bottom: #6a6a6a 1px solid;
+        }
+
+        .terminal-text {
+            height: 250px;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 10px;
+            color: #f0f0f0;
+            text-shadow: #000 0px 1px 0px;
+            font-family: "Consolas", "Courier New", "Courier";
+            font-size: 1.75em;
+            line-height: 1.40em;
+            font-weight: 500;
+            text-align: left;
+            overflow: hidden;
+            -webkit-transition: all 0.5s ease-out;
+            -moz-transition: all 0.5s ease-out;
+            -ms-transition: all 0.5s ease-out;
+            -o-transition: all 0.5s ease-out;
+            transition: all 0.5s ease-out;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="../common/css/layout.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../common/css/print/pdf.css' : '../common/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../common/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section>
+                <h4>NodeSchool Cleveland</h4>
+                <h4>October 19, 2015</h4>
+                <h2>Promise It Won't Hurt</h2>
+                <p>
+                    <small>Thanks to our sponsors</small>
+                </p>
+                <div class="flex-row">
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/leandog.png"/>
+                    </span>
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/rockwell.jpg"/>
+                    </span>
+                </div>
+            </section>
+
+            <section>
+                <h1>Welcome</h1>
+                <section></section>
+                <section>
+                    <h3>Bathrooms</h3>
+                </section>
+                <section>
+                    <h3>Food!</h3>
+                </section>
+                <section>
+                    <h3>Why are we here?</h3>
+                </section>
+                <section>
+                    <div>Tonight's workshopper...</div>
+                    <h3>Promise It Won't Hurt</h3>
+                </section>
+            </section>
+
+            <section>
+                <h1>Promises?</h1>
+                <section>Why Node.js?</section>
+            </section>
+
+            <section>
+                <div class="flex-row">
+                    <span class="flex-item-dynamic">
+                        Efficient Programs
+                    </span>
+                    <span class="flex-item-static">&larr;</span>
+                    <span class="flex-item-dynamic box">
+                        Programming Environment
+                    </span>
+                    <span class="flex-item-static">&rarr;</span>
+                    <span class="flex-item-dynamic">
+                        Developer Productivity
+                    </span>
+                </div>
+            </section>
+
+            <section>
+                <h3>Node's Approach</h3>
+                <section>
+                    Target the slowest, most difficult parts of a program
+                </section>
+                <section>
+                    <table>
+                        <tr>
+                            <th></th><th>Cycles</th>
+                        </tr>
+                        <tr>
+                            <td>L1 Cache</td><td>3</td>
+                        </tr>
+                        <tr>
+                            <td>L2 Cache</td><td>14</td>
+                        </tr>
+                        <tr>
+                            <td>RAM</td><td>250</td>
+
+                        </tr>
+                        <tr>
+                            <td>Disk</td><td>41 000 000</td>
+                        </tr>
+                        <tr>
+                            <td>Network</td><td>240 000 000</td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+
+            <section>
+                <h3>Possible Solutions</h3>
+                <section>Synchronous programming</section>
+                <section>Create processes</section>
+                <section>Create threads</section>
+                <section>Event-Driven, non-blocking architecture</section>
+            </section>
+
+            <section>
+                <h3>Cut to the Chase</h3>
+                <section>
+                    1 thread for your code (developer productivity)
+                    <ul>
+                        <li>Little overhead</li>
+                        <li>Developer productivity</li>
+                        <li>No concurrency for you <br/>
+                            <small>You can run parallel code using child processes or WebWorkers</small>
+                        </li>
+                    </ul>
+                    <p>
+                        Node does asyc I/O using threads in the backend
+                    </p>
+                </section>
+                <section>
+                    <h3>&nbsp;</h3>
+                    <h3>Your code will never be interrupted.</h3>
+                    <h3>&nbsp;</h3>
+                    <h3>I/O will not block.</h3>
+                    <h3>&nbsp;</h3>
+                    <p><small>
+                        Source:
+                        <a href="http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/">
+                            http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/
+                        </a>
+                    </small></p>
+
+                </section>
+
+            </section>
+
+            <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+            </section>
+
+            <section>
+                <h3>Enter JavaScript</h3>
+                <section>
+                    <h4>
+                        Asynchronous programming involves callback functions
+                    </h4>
+
+                </section>
+                <section>
+                    <h4>
+                        JavaScript to the rescue
+                    </h4>
+                    <ul>
+                        <li>First class functions</li>
+                        <li>Closures</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Some things are still tedious <br/>
+                        <img class="emoji" src="images/annoyed.jpg" alt="frown"/>
+                    </h4>
+                </section>
+            </section>
+
+            <section>
+                Promises
+
+                <section>
+                    TLDR: <br/>
+                    An placehoder for a value that may be available in the future.
+                </section>
+                <section>
+                    It will be either fulfilled or rejected... ONCE!
+                </section>
+                <section>
+                    After getting a promise, your code should register a fulfillment
+                    handler and/or a rejection handler.
+                    <pre><code data-trim>
+var myPromise = someAsyncOperation();
+myPromise.then(
+    function onFulfilled(promisedValue) {
+        // Do something
+    },
+    function onRejected(err) {
+        // Do something
+    }
+);
+                    </code></pre>
+                </section>
+                <section>
+                    <h4>This is no different than using callbacks! <br/>
+                        <br/>
+                        You said promises could be combined in interesting ways.
+                    </h4>
+                </section>
+                <section>
+<pre><code data-trim>
+var outputPromise = asyncOperationA().then(
+    function onFulfilled(valueA) {
+        // Do something with valueA.
+    },
+    function onRejected(error) {
+        // Handle error condition.
+    }
+);
+</code></pre>
+                    <div>promise.then() returns a promise! <br/>
+                        <br/>
+                        Your handlers must do 1 of 3 things:
+                        <ol>
+                            <li>Return a value <br/>
+                                outputPromise is fulfilled with that value
+                            </li>
+                            <li>Throw an exception <br/>
+                                outputPromise is rejected with that exception
+                            </li>
+                            <li>Return a promise <br/>
+                                outputPromise "becomes" that promise
+                            </li>
+                        </ol>
+                    </div>
+                </section>
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>Chaining Promises
+                <section>
+                    <h4>There are 2 ways to chain promises...</h4>
+                </section>
+                <section>
+                    <h4>Inside chaining</h4>
+                    <pre><code data-trim>
+asyncOperationA()
+.then(
+    function (valueA) {
+        return asyncOperationB()
+        .then(
+            function (valueB) {
+                // Advantage: Can use both valueA and valueB here.
+                // Disadvantage: Deep indentation
+                var someValue;
+                return someValue
+            }
+        );
+    }
+);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h4>Outside chaining</h4>
+                    <pre><code data-trim>
+asyncOperationA()
+.then(
+    function (valueA) {
+        var returnValueA;
+        return returnValueA;
+    }
+)
+.then(
+    function (valueB) {
+        // valueB is returnValueA.
+        var return valueB;
+        return returnValueB;
+    }
+);
+                    </code></pre>
+                </section>
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                Converting from Callbacks to Promises
+
+                <pre><code data-trim>
+var q = require('q');
+
+function promiseOperationA(arg1, arg2) {
+    var dfd = q.defer();
+
+    setTimeout(function () {
+        dfd.resolve(5);
+
+        // To report an error.
+        // dfd.reject(new Error('All the things broke!'));
+    }, 1000);
+
+    return dfd.promise;
+}
+                </code></pre>
+
+                <small>()</small>
+
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>We're Just Scratching the Surface
+
+                <section>
+                    <p>
+                        <pre><code>
+promise.catch(rejectionHandlerFunc);
+                        </code></pre>
+
+                    </p>
+                    <p>
+                        Shorthand for: <br/>
+                        then(null, onRejected);
+                    </p>
+                </section>
+
+                <section>
+                    <p>
+                        <pre><code>
+var megaPromise = q.all([promiseA, promiseB, promiseC]);
+                        </code></pre>
+
+                    </p>
+                    <p>
+                        Returns a promise that is resolved when when all
+                        promises in the array have been resolved or is rejected
+                        when the first promise in the array is rejected
+                        (short-circuiting)
+                    </p>
+                </section>
+
+                <section>
+                    <p>
+                        <pre>
+                            <code>
+var megaPromise = q.allSettled([promiseA, promiseB, promiseC]);
+                            </code>
+                        </pre>
+                    </p>
+                    <p>
+                        Returns a promise that waits for all promises to be
+                        fulfilled or rejected (not short-circuiting)
+                    </p>
+                </section>
+
+                <section>
+                    <p>
+                        <pre><code>
+var megaPromise = q.any([promiseA, promiseB, promiseC]);
+                        </code></pre>
+                    </p>
+                    <p>
+                       Returns a promise that is fulfilled when the first
+                        promise from the array is fulfilled.  It is rejected if
+                        all promises are rejected.
+                    </p>
+                </section>
+
+                <section>
+                    <p>
+                        <pre><code>
+promise.finally(func)
+                        </code></pre>
+                    </p>
+
+                    <p>
+                        Like the finally in a try/catch/finally.
+                    </p>
+                </section>
+
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                Gotchas
+
+                <section>
+
+                </section>
+
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                <h1>Thank You!</h1>
+                <h4>Presentations: <br/>
+                    <a href="http://bit.ly/nsclepresentations">http://bit.ly/nsclepresentations</a>
+                </h4>
+                <div class="flex-row">
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/leandog.png"/>
+                    </span>
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/rockwell.jpg"/>
+                    </span>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+
+
+    <!--
+    Example: Giphy background
+    <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+        <h2>... and GIFs!</h2>
+    </section>
+    -->
+
+    <!--
+    Example: How to do a terminal window
+    <div class="terminal">
+        <div class="terminal-title">terminal - 86 x 29</div>
+        <div class="terminal-text type-text" title="npm init \n npm install &#45;&#45;save q \n npm install -g promise-it-wont-hurt \n"></div>
+    </div>-->
+
+
+    <script src="../common/lib/js/head.min.js"></script>
+    <script src="../common/js/reveal.js"></script>
+
+    <script src="../common/js/jquery-1.11.3.min.js"></script>
+    <script src="../common/js/jquery.teletype.min.js"></script>
+    <script>
+        /*
+
+         $( function() {
+         $( '.type-text' ).each( function() {
+         var items = $( this ).text();
+         $( this ).empty().attr( 'title', '' ).teletype( {
+         text: $.map( items.split( ';' ), $.trim ), // List of strings to output.
+         typeDelay: 10, // Minimum delay, in ms, between typing characters.
+         backDelay: 20, // Minimum delay, in ms, between deleting characters.
+         blinkSpeed: 1000, // Interval, in ms, that the cursor will flash.
+         cursor: '▋', // Character used to represent the cursor.
+         delay: 3000, // Time in ms to pause before deleting the current text.
+         preserve: false, // Prevent auto delete of the current string and begin outputting the next string.
+         prefix: '$ ', // Begin each string with this prefix value.
+         loop: 0, // Number of times to loop through the output strings, for unlimited use 0.
+         humanise: true // Add a random delay before each character to represent human interaction.
+         } );
+         } );
+         } );
+
+         */
+
+        Reveal.addEventListener(
+                'slidechanged', function (event) {
+                    // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+                    $(event.currentSlide).find(".type-text").each(
+                            function () {
+                                var items = $(this).attr('title');
+                                $(this).empty().teletype(
+                                        {
+                                            text:       $.map(
+                                                    items.split(';'), $.trim), // List of strings to output.
+                                            typeDelay:  40, // Minimum delay, in ms, between typing characters.
+                                            backDelay:  20, // Minimum delay, in ms, between deleting characters.
+                                            blinkSpeed: 1000, // Interval, in ms, that the cursor will flash.
+                                            cursor:     '▋', // Character used to represent the cursor.
+                                            delay:      3000, // Time in ms to pause before deleting the current text.
+                                            preserve:   true, // Prevent auto delete of the current string and begin outputting the next string.
+                                            prefix:     '$ ', // Begin each string with this prefix value.
+                                            loop:       1, // Number of times to loop through the output strings, for unlimited use 0.
+                                            humanise:   true // Add a random delay before each character to represent human interaction.
+                                        });
+                            });
+
+                });
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize(
+                {
+                    controls: true,
+                    progress: true,
+                    history:  true,
+                    center:   true,
+
+                    transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                    // Optional reveal.js plugins
+                    dependencies: [
+                        {
+                            src:       'lib/js/classList.js',
+                            condition: function () { return !document.body.classList; }
+                        },
+                        {
+                            src:       '../common/plugin/markdown/marked.js',
+                            condition: function () { return !!document.querySelector('[data-markdown]'); }
+                        },
+                        {
+                            src:       '../common/plugin/markdown/markdown.js',
+                            condition: function () { return !!document.querySelector('[data-markdown]'); }
+                        },
+                        {
+                            src:       '../common/plugin/highlight/highlight.js',
+                            async:     true,
+                            condition: function () { return !!document.querySelector('pre code'); },
+                            callback:  function () { hljs.initHighlightingOnLoad(); }
+                        },
+                        {
+                            src:   '../common/plugin/zoom-js/zoom.js',
+                            async: true
+                        },
+                        {
+                            src:   '../common/plugin/notes/notes.js',
+                            async: true
+                        }
+                    ]
+                });
+
+    </script>
+
+</body>
+</html>
