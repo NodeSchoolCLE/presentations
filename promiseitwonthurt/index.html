@@ -579,21 +579,12 @@ aggregatePromise.then(
 
             <!--*************************************************************-->
 
-
-
-            <!--*************************************************************-->
-
-
-
-            <!--*************************************************************-->
-
             <section>
-                Converting from Callbacks to Promises
-
+                <h3>Converting from Callbacks to Promises</h3>
                 <pre><code data-trim>
 var q = require('q');
 
-function promiseOperationA(arg1, arg2) {
+function promiseOperation() {
     var dfd = q.defer();
 
     setTimeout(function () {
@@ -606,9 +597,11 @@ function promiseOperationA(arg1, arg2) {
     return dfd.promise;
 }
                 </code></pre>
-
-                <small>()</small>
-
+                <aside class="notes">
+                    <ul>
+                        <li>This is not the ES6 promises way.</li>
+                    </ul>
+                </aside>
             </section>
 
             <!--*************************************************************-->
