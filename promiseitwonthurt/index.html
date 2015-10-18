@@ -94,13 +94,15 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
 
+            <!--*************************************************************-->
+
             <section>
                 <h4>NodeSchool Cleveland</h4>
                 <h4>October 19, 2015</h4>
                 <h2>Promise It Won't Hurt</h2>
-                <p>
+                <h6>
                     <small>Thanks to our sponsors</small>
-                </p>
+                </h6>
                 <div class="flex-row">
                     <span class="flex-item-dynamic">
                         <img src="../common/images/leandog.png"/>
@@ -111,44 +113,100 @@
                 </div>
             </section>
 
+            <!--*************************************************************-->
+
             <section>
-                <h1>Welcome</h1>
-                <section></section>
-                <section>
-                    <h3>Bathrooms</h3>
+                <section data-background="images/welcome.gif">
+                    <aside class="notes">
+                        <ul>
+                            <li>Thanks Lean Dog</li>
+                            <li>Restrooms</li>
+                            <li>Food and drinks</li>
+                            <li>Thanks Rockwell Automation</li>
+                            <li>Why are we here?</li>
+                            <ul>
+                                <li>Pair</li>
+                                <li>Help those around you</li>
+                            </ul>
+                        </ul>
+                    </aside>
                 </section>
+
                 <section>
-                    <h3>Food!</h3>
+                    <p class="center"><small>Tonight's workshopper...</small></p>
+                    <h2>Promise It Won't Hurt</h2>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Different format</li>
+                            <li>Please interrupt</li>
+                        </ul>
+                    </aside>
                 </section>
-                <section>
-                    <h3>Why are we here?</h3>
-                </section>
-                <section>
-                    <div>Tonight's workshopper...</div>
-                    <h3>Promise It Won't Hurt</h3>
-                </section>
+
             </section>
+
+            <!--*************************************************************-->
 
             <section>
                 <h1>Promises?</h1>
-                <section>Why Node.js?</section>
+                <section>
+                    <aside class="notes">
+                        <ul>
+                            <li>Popular topic</li>
+                            <li>Using Q, not ES6/2015</li>
+                            <li>Not a big jump</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>Why Node.js?
+                    <aside class="notes">
+                        <ul>
+                            <li>To understand the role of promises, need to have
+                                a fundamental understanding of Node
+                            </li>
+                        </ul>
+                    </aside>
+                </section>
             </section>
+
+            <!--*************************************************************-->
 
             <section>
                 <div class="flex-row">
-                    <span class="flex-item-dynamic">
-                        Efficient Programs
+                    <div class="flex-item-dynamic"></div>
+                    <span class="flex-item-static">
+                        Efficient <br/> Programs
                     </span>
+                    <div class="flex-item-dynamic"></div>
                     <span class="flex-item-static">&larr;</span>
-                    <span class="flex-item-dynamic box">
-                        Programming Environment
+                    <div class="flex-item-dynamic"></div>
+                    <span class="flex-item-static box">
+                        Programming <br/> Environment
                     </span>
+                    <div class="flex-item-dynamic"></div>
                     <span class="flex-item-static">&rarr;</span>
-                    <span class="flex-item-dynamic">
-                        Developer Productivity
+                    <div class="flex-item-dynamic"></div>
+                    <span class="flex-item-static">
+                        Developer <br/> Productivity
                     </span>
+                    <div class="flex-item-dynamic"></div>
                 </div>
+                <aside class="notes">
+                    <ol>
+                        <li>Programming language/runtime's purpose</li>
+                        <li>Fast was not always a priority
+                            <ol>
+                                <li>No more "free lunch" (2005)</li>
+                                <li>Now we leverage multiple cores</li>
+                            </ol>
+                        </li>
+                        <li>Balancing this is hard - many approaches</li>
+                    </ol>
+                </aside>
             </section>
+
+            <!--*************************************************************-->
 
             <section>
                 <h3>Node's Approach</h3>
@@ -158,7 +216,7 @@
                 <section>
                     <table>
                         <tr>
-                            <th></th><th>Cycles</th>
+                            <th>Access Type</th><th>Cycles</th>
                         </tr>
                         <tr>
                             <td>L1 Cache</td><td>3</td>
@@ -180,6 +238,8 @@
                 </section>
             </section>
 
+            <!--*************************************************************-->
+
             <section>
                 <h3>Possible Solutions</h3>
                 <section>Synchronous programming</section>
@@ -188,20 +248,40 @@
                 <section>Event-Driven, non-blocking architecture</section>
             </section>
 
+            <!--*************************************************************-->
+
             <section>
                 <h3>Cut to the Chase</h3>
                 <section>
-                    1 thread for your code (developer productivity)
-                    <ul>
-                        <li>Little overhead</li>
-                        <li>Developer productivity</li>
-                        <li>No concurrency for you <br/>
-                            <small>You can run parallel code using child processes or WebWorkers</small>
-                        </li>
-                    </ul>
-                    <p>
-                        Node does asyc I/O using threads in the backend
-                    </p>
+
+                    <div class="flex-row">
+                        <div class="flex-item-dyanamic">
+                            <p>
+                                1 thread for your code
+                            </p>
+
+                            <ul>
+                                <li>Little overhead</li>
+                                <li>Developer productivity</li>
+                                <li>No concurrency for you <br/>
+                                    <small>
+                                        (You actually can run parallel code using
+                                        child processes or WebWorkers)
+                                    </small>
+                                </li>
+                            </ul>
+                            <p>
+                                Node does asyc I/O using threads in the backend
+                            </p>
+                        </div>
+                        <div class="flex-item-static">
+                            <img src="images/no-soup-for-you.gif" alt="No soup for you!"/>
+                            <br/>
+                            No concurrency for you!
+                        </div>
+                    </div>
+
+
                 </section>
                 <section>
                     <h3>&nbsp;</h3>
@@ -220,8 +300,12 @@
 
             </section>
 
+            <!--*************************************************************-->
+
             <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
             </section>
+
+            <!--*************************************************************-->
 
             <section>
                 <h3>Enter JavaScript</h3>
@@ -232,27 +316,42 @@
 
                 </section>
                 <section>
-                    <h4>
-                        JavaScript to the rescue
-                    </h4>
-                    <ul>
-                        <li>First class functions</li>
-                        <li>Closures</li>
-                    </ul>
+                    <div class="flex-row">
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <p>
+                                JavaScript to the rescue
+                            </p>
+                            <ul>
+                                <li>First class functions</li>
+                                <li>Closures</li>
+                            </ul>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                    </div>
                 </section>
                 <section>
-                    <h4>Some things are still tedious <br/>
+                    <p class="center">
+                        Some things are still tedious
+                    </p>
+                    <p class="center">
                         <img class="emoji" src="images/annoyed.jpg" alt="frown"/>
-                    </h4>
+                    </p>
                 </section>
             </section>
 
+            <!--*************************************************************-->
+
             <section>
-                Promises
+                <h3>Promises</h3>
 
                 <section>
-                    TLDR: <br/>
-                    An placehoder for a value that may be available in the future.
+                    <p>
+                        TLDR:
+                    </p>
+                    <p>
+                        An placehoder for a value that may be available in the future.
+                    </p>
                 </section>
                 <section>
                     It will be either fulfilled or rejected... ONCE!
@@ -485,14 +584,6 @@ promise.finally(func)
     </div>
 
 
-
-    <!--
-    Example: Giphy background
-    <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-        <h2>... and GIFs!</h2>
-    </section>
-    -->
-
     <!--
     Example: How to do a terminal window
     <div class="terminal">
@@ -557,6 +648,9 @@ promise.finally(func)
         // https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize(
                 {
+                    //width: 1920,
+                    //height: 958,
+
                     controls: true,
                     progress: true,
                     history:  true,
@@ -594,6 +688,12 @@ promise.finally(func)
                         }
                     ]
                 });
+
+        Reveal.configure(
+                {
+                    slideNumber: true
+                }
+        );
 
     </script>
 
