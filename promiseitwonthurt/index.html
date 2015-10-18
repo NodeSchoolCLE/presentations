@@ -350,154 +350,240 @@
             <!--*************************************************************-->
 
             <section>
-                <h3>Enter JavaScript</h3>
                 <section>
-                    <h4>
-                        Asynchronous programming involves callback functions
-                    </h4>
-
+                    <h3>So what does this look like?</h3>
+                    <aside class="notes">
+                        <ul>
+                            <li>Node uses callbacks</li>
+                            <li>First class functions</li>
+                            <li>Closures</li>
+                        </ul>
+                    </aside>
                 </section>
                 <section>
-                    <div class="flex-row">
-                        <div class="flex-item-dynamic"></div>
-                        <div class="flex-item-static">
-                            <p>
-                                JavaScript to the rescue
-                            </p>
-                            <ul>
-                                <li>First class functions</li>
-                                <li>Closures</li>
-                            </ul>
-                        </div>
-                        <div class="flex-item-dynamic"></div>
-                    </div>
-                </section>
-                <section>
-                    <p class="center">
-                        Some things are still tedious
-                    </p>
-                    <p class="center">
-                        <img class="emoji" src="images/annoyed.jpg" alt="frown"/>
-                    </p>
-                </section>
-            </section>
-
-
-
-            <!--*************************************************************-->
-
-            <section>
-                <h3>Promises</h3>
-
-                <section>
-                    <p>
-                        TLDR:
-                    </p>
-                    <p>
-                        An placeholder for a value that may be available in the future.
-                    </p>
-                </section>
-                <section>
-                    It will be either fulfilled or rejected... ONCE!
-                </section>
-                <section>
-                    <p>
-                        After getting a promise, your code should register a fulfillment
-                        handler and/or a rejection handler.
-                    </p>
                     <pre><code data-trim>
-var myPromise = someAsyncOperation();
-myPromise.then(
-    function onFulfilled(promisedValue) {
-        // Do something
-    },
-    function onRejected(err) {
-        // Do something
+var fs = require('fs');
+
+fs.readFile(
+    'file1.txt',
+    function (err, data) {
+        if (err) {throw err;}
+        console.log(data);
     }
 );
                     </code></pre>
+                    <aside class="notes">
+                        <ul>
+                            <li>Example of using a callback.</li>
+                            <li>But what happens when there's more than one?</li>
+                        </ul>
+                    </aside>
                 </section>
                 <section>
-                    <h4>This is no different than using callbacks! <br/>
-                        <br/>
-                        You said promises could be combined in interesting ways.
-                    </h4>
-                </section>
-                <section>
-<pre><code data-trim>
-var outputPromise = asyncOperationA().then(
-    function onFulfilled(valueA) {
-        // Do something with valueA.
-    },
-    function onRejected(error) {
-        // Handle error condition.
-    }
-);
-</code></pre>
-                    <div>promise.then() returns a promise! <br/>
-                        <br/>
-                        Your handlers must do 1 of 3 things:
-                        <ol>
-                            <li>Return a value <br/>
-                                outputPromise is fulfilled with that value
-                            </li>
-                            <li>Throw an exception <br/>
-                                outputPromise is rejected with that exception
-                            </li>
-                            <li>Return a promise <br/>
-                                outputPromise "becomes" that promise
-                            </li>
-                        </ol>
-                    </div>
-                </section>
-            </section>
+                    <pre><code data-trim="">
+var fs = require('fs');
 
-            <!--*************************************************************-->
+fs.readFile(
+    'file1.txt',
+    function (err, data) {
+        if (err) {throw err;}
 
-            <section>Chaining Promises
-                <section>
-                    <h4>There are 2 ways to chain promises...</h4>
-                </section>
-                <section>
-                    <h4>Inside chaining</h4>
-                    <pre><code data-trim>
-asyncOperationA()
-.then(
-    function (valueA) {
-        return asyncOperationB()
-        .then(
-            function (valueB) {
-                // Advantage: Can use both valueA and valueB here.
-                // Disadvantage: Deep indentation
-                var someValue;
-                return someValue
+        fs.readFile(
+            'file2.txt',
+            function (err, data) {
+                if (err) {throw err;}
+                console.log(data);
             }
         );
     }
 );
                     </code></pre>
+                    <aside class="notes">
+                        <ul>
+                            <li>Error handling is duplicated</li>
+                            <li>Big prob: Not concurrent</li>
+                        </ul>
+                    </aside>
                 </section>
-
                 <section>
-                    <h4>Outside chaining</h4>
                     <pre><code data-trim>
-asyncOperationA()
-.then(
-    function (valueA) {
-        var returnValueA;
-        return returnValueA;
-    }
-)
-.then(
-    function (valueB) {
-        // valueB is returnValueA.
-        var return valueB;
-        return returnValueB;
-    }
-);
+var fs = require('fs'),
+    numCompleted = 0,
+    onFileRead = function (err, data) {
+        if (err) {throw err;}
+
+        numCompleted += 1;
+        if (numCompleted === 2) {
+            // Both async operation have been completed
+        }
+    };
+
+fs.readFile('file1.txt', onFileRead);
+fs.readFile('file2.txt', onFileRead);
                     </code></pre>
+                    <aside class="notes">
+                        <p>It is concurrent, but...</p>
+                        <ul>
+                            <li>Error handling will be difficult</li>
+                            <li>Mixing control flow logic with app logic</li>
+                            <li>Not composable</li>
+                        </ul>
+                    </aside>
                 </section>
             </section>
+
+
+            <!--*************************************************************-->
+
+            <section>
+                <section>
+                    <h3>Promises</h3>
+                    <p>
+                        A placeholder for a value that may be available in the future.
+                    </p>
+                    <p>
+                        It will be fulfilled or rejected... <em>once!</em>
+                    </p>
+                    <aside class="notes">
+                        <ul>
+                            <li>Let's see what this looks like...</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    <pre><code data-trim>
+var file1Promise = readFilePromise('file1.txt');
+file1Promise.then(
+    function onFulfilled(data) {console.log(data);},
+    function onRejected(err) {throw err;}
+);
+                    </code></pre>
+                    <aside class="notes">
+                        <ul>
+                            <li>then() takes 2 funcs</li>
+                            <li>Called on next turn of event loop</li>
+                            <li>Similar to our previous callbacks, actually</li>
+                            <li>But now we have file1Promise that can be composed</li>
+                            <li>You must understand then()</li>
+                        </ul>
+                    </aside>
+                </section>
+            </section>
+
+
+            <section>
+                <section>
+                    <pre><code>
+var promise1 = readFilePromise('file1.txt');
+var wat = promise1.then(
+    function onFulfilled(data) { /* ... */ },
+    function onRejected(err) { /* ... */ }
+);
+                    </code></pre>
+                    <p>
+                        Q: What does then() return? <br/>
+                        (What is wat?)
+                    </p>
+                </section>
+                <section>
+                    <pre><code>
+var promise1 = readFilePromise('file1.txt');
+var promise2 = promise1.then(
+    function onFulfilled(data) { /* ... */ },
+    function onRejected(err) { /* ... */ }
+);
+                    </code></pre>
+                    <p>
+                        Q: What does then() return?
+                    </p>
+                    <p>
+                        A: A promise
+                    </p>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>then() is a <b>promise</b> method that gives you a <b>promise</b></li>
+                            <li>This allows chaining</li>
+                            <li>then().then().then() ...</li>
+                            <li>The promise you get depends on what your handlers do</li>
+                            <li>...</li>
+                        </ul>
+                    </aside>
+                </section>
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                <pre><code>
+var promise1 = readFilePromise('file1.txt');
+var promise2 = promise1.then(
+    function onFulfilled(data) { /* ... */ },
+    function onRejected(err) { /* ... */ }
+);
+                    </code></pre>
+                <p>1 of 3 things can happen in your handlers:</p>
+                <ol>
+                    <li class="fragment">
+                        Return a value <br/>
+                        then() will return a <b>promise</b> that has been fulfilled with that value.
+                    </li>
+                    <li class="fragment">
+                        Throw an exception <br/>
+                        then() will return a <b>promise</b> that has been rejected with that exception.
+                    </li>
+                    <li class="fragment">
+                        Return a promise <br/>
+                        then() will returns that <b>promise</b>.
+                    </li>
+                </ol>
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                <h3>Reading 2 files sequentially</h3>
+                <pre><code data-trim="">
+readFilePromise('file1.txt').then(
+    function onFulfilled(data) {
+        console.log(data);
+        return readFilePromise('file2.txt');
+    }
+).then(
+    function onFulfilled(data) {console.log(data);}
+).catch(
+    function onRejected(err) {throw err;}
+);
+                </code></pre>
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                <h3>Reading 2 files concurrently</h3>
+                    <pre><code data-trim="">
+var q = require('q'),
+    aggregatePromise;
+
+aggregatePromise = q.all(
+    [readFilePromise('file1.txt'), readFilePromise('file2.txt')]
+);
+aggregatePromise.then(
+    function (values) {
+        // values[0] is file1.txt data
+        // values[1] is file2.txt data
+    }
+).catch(function onRejected(err) {throw err;});
+                    </code></pre>
+            </section>
+
+            <!--*************************************************************-->
+
+
+
+            <!--*************************************************************-->
+
+
 
             <!--*************************************************************-->
 
@@ -527,95 +613,51 @@ function promiseOperationA(arg1, arg2) {
 
             <!--*************************************************************-->
 
-            <section>We're Just Scratching the Surface
+            <section>
+                <h3>We're Just Scratching the Surface</h3>
 
-                <section>
-                    <p>
-                        <pre><code>
-promise.catch(rejectionHandlerFunc);
-                        </code></pre>
-
-                    </p>
-                    <p>
-                        Shorthand for: <br/>
-                        then(null, onRejected);
-                    </p>
-                </section>
-
-                <section>
-                    <p>
-                        <pre><code>
-var megaPromise = q.all([promiseA, promiseB, promiseC]);
-                        </code></pre>
-
-                    </p>
-                    <p>
-                        Returns a promise that is resolved when when all
-                        promises in the array have been resolved or is rejected
-                        when the first promise in the array is rejected
-                        (short-circuiting)
-                    </p>
-                </section>
-
-                <section>
-                    <p>
-                        <pre>
-                            <code>
-var megaPromise = q.allSettled([promiseA, promiseB, promiseC]);
-                            </code>
-                        </pre>
-                    </p>
-                    <p>
-                        Returns a promise that waits for all promises to be
-                        fulfilled or rejected (not short-circuiting)
-                    </p>
-                </section>
-
-                <section>
-                    <p>
-                        <pre><code>
-var megaPromise = q.any([promiseA, promiseB, promiseC]);
-                        </code></pre>
-                    </p>
-                    <p>
-                       Returns a promise that is fulfilled when the first
-                        promise from the array is fulfilled.  It is rejected if
-                        all promises are rejected.
-                    </p>
-                </section>
-
-                <section>
-                    <p>
-                        <pre><code>
-promise.finally(func)
-                        </code></pre>
-                    </p>
-
-                    <p>
-                        Like the finally in a try/catch/finally.
-                    </p>
-                </section>
+                <ul>
+                    <li><code>promise.spread()</code></li>
+                    <li><code>promise.allSettled()</code></li>
+                    <li><code>promise.any()</code></li>
+                    <li><code>promise.race()</code></li>
+                    <li><code>promise.finally()</code></li>
+                    <li>etc. etc. etc.</li>
+                </ul>
 
             </section>
 
             <!--*************************************************************-->
 
             <section>
-                Gotchas
+                <h3>Let's get started</h3>
 
-                <section>
+                    <p>To get setup:</p>
+                    <pre><code>
+$ mkdir promise-it-wont-hurt && cd promise-it-wont-hurt
+$ npm install q
+$ npm install -g promise-it-wont-hurt@latest
+                    </code></pre>
 
-                </section>
+                <p>
+                    To run: <code></code>
+                </p>
+                <pre><code>
+$ promise-it-wont-hurt
+$ promise-it-wont-hurt run program.js
+$ promise-it-wont-hurt verfiy program.js
+                </code></pre>
 
+                <p>
+                    This presentation: <br/>
+                    <a href="http://bit.ly/nsclepresentations">http://bit.ly/nsclepresentations</a>
+                </p>
             </section>
 
             <!--*************************************************************-->
 
             <section>
                 <h1>Thank You!</h1>
-                <h4>Presentations: <br/>
-                    <a href="http://bit.ly/nsclepresentations">http://bit.ly/nsclepresentations</a>
-                </h4>
                 <div class="flex-row">
                     <span class="flex-item-dynamic">
                         <img src="../common/images/leandog.png"/>
