@@ -138,6 +138,8 @@
 
                     <aside class="notes">
                         <ul>
+                            <li>Based on surevey results from first meetup</li>
+                            <li>More advanced</li>
                             <li>Different format</li>
                             <li>Please interrupt</li>
                         </ul>
@@ -214,8 +216,9 @@
                     Target the slowest, most difficult parts of a program
                     <aside class="notes">
                         <ul>
-                            <li>Make the slowest operations asynchronous</li>
-                            <li>Make everything else single threaded</li>
+                            <li>Identify the costly operations -- I/O</li>
+                            <li>Target the costly ones and make them async</li>
+                            <li>Dovetail asynchronicity into the rest of the program</li>
                         </ul>
                     </aside>
                 </section>
@@ -243,8 +246,10 @@
                     </table>
                     <aside class="notes">
                         <ul>
-                            <li>This is what our programs do.</li>
-                            <li>Especially web servers.</li>
+                            <li>Step 1: ID what programs do.</li>
+                            <li>Huge disparity</li>
+                            <li>Target the slow operations and make them async</li>
+                            <li>Bring asynchronicity back to the programmer in an easy way</li>
                         </ul>
                     </aside>
                 </section>
@@ -254,10 +259,16 @@
 
             <section>
                 <h3>Possible Solutions</h3>
+                <section>
+                    <aside class="notes">
+                        <ul>
+                            <li>Use the right tool for the job</li>
+                        </ul>
+                    </aside>
+                </section>
                 <section>Synchronous programming
                     <aside class="notes">
                         <ul>
-                            <li>Use the right tool for the job.</li>
                             <li>Super easy</li>
                             <li>Super slow</li>
                         </ul>
@@ -343,6 +354,12 @@
                             http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/
                         </a>
                     </small></p>
+                    <aside class="notes">
+                        <ul>
+                            <li>Amazingly cool characteristics</li>
+                            <li>This is great for web servers</li>
+                        </ul>
+                    </aside>
                 </section>
 
             </section>
@@ -361,6 +378,7 @@
                     </aside>
                 </section>
                 <section>
+                    <h3>Typical Callback Usage</h3>
                     <pre><code data-trim>
 var fs = require('fs');
 
@@ -375,11 +393,13 @@ fs.readFile(
                     <aside class="notes">
                         <ul>
                             <li>Example of using a callback.</li>
+                            <li>Typical Node callback argument convention</li>
                             <li>But what happens when there's more than one?</li>
                         </ul>
                     </aside>
                 </section>
                 <section>
+                    <h3>Mulitple Async Operations - Sequential</h3>
                     <pre><code data-trim="">
 var fs = require('fs');
 
@@ -402,10 +422,12 @@ fs.readFile(
                         <ul>
                             <li>Error handling is duplicated</li>
                             <li>Big prob: Not concurrent</li>
+                            <li>"Pyramid of Doom"</li>
                         </ul>
                     </aside>
                 </section>
                 <section>
+                    <h3>Multiple Async Operations - Concurrently</h3>
                     <pre><code data-trim>
 var fs = require('fs'),
     numCompleted = 0,
@@ -451,6 +473,7 @@ fs.readFile('file2.txt', onFileRead);
                     </aside>
                 </section>
                 <section>
+                    <h3>Using a promise</h3>
                     <pre><code data-trim>
 var file1Promise = readFilePromise('file1.txt');
 file1Promise.then(
@@ -460,7 +483,8 @@ file1Promise.then(
                     </code></pre>
                     <aside class="notes">
                         <ul>
-                            <li>then() takes 2 funcs</li>
+                            <li>You register fulfillment and/or rejection handlers with the promise </li>
+                            <li>That's the purpose of then()</li>
                             <li>Called on next turn of event loop</li>
                             <li>Similar to our previous callbacks, actually</li>
                             <li>But now we have file1Promise that can be composed</li>
@@ -484,6 +508,13 @@ var wat = promise1.then(
                         Q: What does then() return? <br/>
                         (What is wat?)
                     </p>
+                    <aside class="notes">
+                        <ul>
+                            <li>I've repeated the basic promise usage here</li>
+                            <li>Inserted "wat" variable & assigned it to then()</li>
+                            <li>What is wat?</li>
+                        </ul>
+                    </aside>
                 </section>
                 <section>
                     <pre><code>
@@ -534,9 +565,14 @@ var promise2 = promise1.then(
                     </li>
                     <li class="fragment">
                         Return a promise <br/>
-                        then() will returns that <b>promise</b>.
+                        then() will return that <b>promise</b>.
                     </li>
                 </ol>
+                <aside class="notes">
+                    <ul>
+                        <li>I've created a varible "promise2" to hold the output of then()</li>
+                    </ul>
+                </aside>
             </section>
 
             <!--*************************************************************-->
@@ -563,11 +599,10 @@ readFilePromise('file1.txt').then(
                 <h3>Reading 2 files concurrently</h3>
                     <pre><code data-trim="">
 var q = require('q'),
-    aggregatePromise;
+    aggregatePromise,
+    thePromises = [readFilePromise('file1.txt'), readFilePromise('file2.txt')];
 
-aggregatePromise = q.all(
-    [readFilePromise('file1.txt'), readFilePromise('file2.txt')]
-);
+aggregatePromise = q.all(thePromises);
 aggregatePromise.then(
     function (values) {
         // values[0] is file1.txt data
@@ -582,24 +617,34 @@ aggregatePromise.then(
             <section>
                 <h3>Converting from Callbacks to Promises</h3>
                 <pre><code data-trim>
-var q = require('q');
+var fs = require('fs'),
+    q = require('q');
 
-function promiseOperation() {
+function promiseReadFile(fileName) {
     var dfd = q.defer();
 
-    setTimeout(function () {
-        dfd.resolve(5);
+    fs.readFile(fileName, function (err, data) {
+        if (err)
+        {
+            dfd.reject(err);
+            return;
+        }
 
-        // To report an error.
-        // dfd.reject(new Error('All the things broke!'));
-    }, 1000);
+        dfd.resolve(data);
+    });
 
     return dfd.promise;
 }
                 </code></pre>
                 <aside class="notes">
                     <ul>
+                        <li>If your code is going to use promises, it's nice if all of it uses promises</li>
+                        <li>Node still has callbacks</li>
                         <li>This is not the ES6 promises way.</li>
+                        <li>Top - bottom - middle</li>
+                        <li>This is how you will create a promise in the first couple
+                            of exercises.
+                        </li>
                     </ul>
                 </aside>
             </section>
