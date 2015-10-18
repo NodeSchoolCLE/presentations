@@ -212,6 +212,12 @@
                 <h3>Node's Approach</h3>
                 <section>
                     Target the slowest, most difficult parts of a program
+                    <aside class="notes">
+                        <ul>
+                            <li>Make the slowest operations asynchronous</li>
+                            <li>Make everything else single threaded</li>
+                        </ul>
+                    </aside>
                 </section>
                 <section>
                     <table>
@@ -235,6 +241,12 @@
                             <td>Network</td><td>240 000 000</td>
                         </tr>
                     </table>
+                    <aside class="notes">
+                        <ul>
+                            <li>This is what our programs do.</li>
+                            <li>Especially web servers.</li>
+                        </ul>
+                    </aside>
                 </section>
             </section>
 
@@ -242,10 +254,45 @@
 
             <section>
                 <h3>Possible Solutions</h3>
-                <section>Synchronous programming</section>
-                <section>Create processes</section>
-                <section>Create threads</section>
-                <section>Event-Driven, non-blocking architecture</section>
+                <section>Synchronous programming
+                    <aside class="notes">
+                        <ul>
+                            <li>Use the right tool for the job.</li>
+                            <li>Super easy</li>
+                            <li>Super slow</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>Create processes
+                    <aside class="notes">
+                        <ul>
+                            <li>Fairly easy</li>
+                            <li>Interprocess communication</li>
+                            <li>Does not scale</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>Create threads
+                    <aside class="notes">
+                        <ul>
+                            <li>Lighter than creating processes</li>
+                            <li>Memory -- stack (512 kB)</li>
+                            <li>Eased using thread pools</li>
+                            <li>Thread context switching is prob w/ 10,000 req</li>
+                            <li>Difficult -- l ocks, race conditions</li>
+                            <li>Apache</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>Event-Driven, non-blocking architecture
+                    <aside class="notes">
+                        <ul>
+                            <li>Node's approach</li>
+                            <li>A happy middle ground?</li>
+                            <li>Nginx</li>
+                        </ul>
+                    </aside>
+                </section>
             </section>
 
             <!--*************************************************************-->
@@ -254,55 +301,50 @@
                 <h3>Cut to the Chase</h3>
                 <section>
 
-                    <div class="flex-row">
-                        <div class="flex-item-dyanamic">
-                            <p>
-                                1 thread for your code
-                            </p>
+                    1 thread for your code.
 
+                    <aside class="notes">
+                        <ul>
+                            <li>Little overhead</li>
+                            <li>10,000 requests service by 1 thread w/o context switching</li>
+                            <li>Developer productivity</li>
+                            <li>No concurrency</li>
                             <ul>
-                                <li>Little overhead</li>
-                                <li>Developer productivity</li>
-                                <li>No concurrency for you <br/>
-                                    <small>
-                                        (You actually can run parallel code using
-                                        child processes or WebWorkers)
-                                    </small>
-                                </li>
+                                <li>Not really - child processes, WebWorkers</li>
                             </ul>
-                            <p>
-                                Node does asyc I/O using threads in the backend
-                            </p>
-                        </div>
-                        <div class="flex-item-static">
-                            <img src="images/no-soup-for-you.gif" alt="No soup for you!"/>
-                            <br/>
-                            No concurrency for you!
-                        </div>
-                    </div>
-
-
+                        </ul>
+                    </aside>
                 </section>
                 <section>
-                    <h3>&nbsp;</h3>
-                    <h3>Your code will never be interrupted.</h3>
-                    <h3>&nbsp;</h3>
-                    <h3>I/O will not block.</h3>
-                    <h3>&nbsp;</h3>
+                    Node will perform the costly I/O operations using a thread pool.
+                    <aside class="notes">
+                        <ul>
+                            <li>Of no concern to you.</li>
+                            <li>Your completion code will just run.</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    <div class="flex-row">
+                        <div class="flex-item-dynamic">
+                            <p>Recap</p>
+                            <ol>
+                                <li>Your code will never be interrupted.</li>
+                                <li>I/O will  not block</li>
+                            </ol>
+                        </div>
+                        <div class="flex-item-static">
+                            <img src="http://i.giphy.com/90F8aUepslB84.gif" alt=""/>
+                        </div>
+                    </div>
                     <p><small>
                         Source:
                         <a href="http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/">
                             http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/
                         </a>
                     </small></p>
-
                 </section>
 
-            </section>
-
-            <!--*************************************************************-->
-
-            <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
             </section>
 
             <!--*************************************************************-->
@@ -340,6 +382,8 @@
                 </section>
             </section>
 
+
+
             <!--*************************************************************-->
 
             <section>
@@ -350,15 +394,17 @@
                         TLDR:
                     </p>
                     <p>
-                        An placehoder for a value that may be available in the future.
+                        An placeholder for a value that may be available in the future.
                     </p>
                 </section>
                 <section>
                     It will be either fulfilled or rejected... ONCE!
                 </section>
                 <section>
-                    After getting a promise, your code should register a fulfillment
-                    handler and/or a rejection handler.
+                    <p>
+                        After getting a promise, your code should register a fulfillment
+                        handler and/or a rejection handler.
+                    </p>
                     <pre><code data-trim>
 var myPromise = someAsyncOperation();
 myPromise.then(
@@ -591,12 +637,45 @@ promise.finally(func)
         <div class="terminal-text type-text" title="npm init \n npm install &#45;&#45;save q \n npm install -g promise-it-wont-hurt \n"></div>
     </div>-->
 
+    <!--*************************************************************-->
+
+    <!--
+    An example of using the Repl plugin:
+    -->
+
+    <!--
+    <section>
+        <pre><code class="eval language-javascript" contenteditable>
+function longOperation () {
+var delay = 3 * 1000,
+dfd = Q.defer();
+
+setTimeout(
+function () {
+    dfd.resolve(delay);
+}, delay);
+
+return dfd.promise;
+}
+
+var promise = longOperation();
+promise.then(
+function (value) {
+alert('Resolved with value=' + value);
+});
+        </code></pre>
+        <pre><code class="echo language-javascript"> </code></pre>
+    </section>
+    -->
+
 
     <script src="../common/lib/js/head.min.js"></script>
     <script src="../common/js/reveal.js"></script>
 
     <script src="../common/js/jquery-1.11.3.min.js"></script>
     <script src="../common/js/jquery.teletype.min.js"></script>
+    <script src="../common/js/q.js"></script>
+
     <script>
         /*
 
@@ -685,6 +764,11 @@ promise.finally(func)
                         {
                             src:   '../common/plugin/notes/notes.js',
                             async: true
+                        },
+                        {
+                            src:   '../common/plugin/repl/repl.js',
+                            async: true,
+                            condition: function () { return !!document.querySelector('pre code.eval'); }
                         }
                     ]
                 });
