@@ -17,6 +17,9 @@
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="../common/lib/css/zenburn.css">
 
+    <!-- Code line numbering -->
+    <link rel="stylesheet" href="../common/lib/css/line-numbers.css"/>
+
     <style type="text/css">
         /*.terminal { text-align: left; }
          text editor styles */
@@ -379,7 +382,7 @@
                 </section>
                 <section>
                     <h3>Typical Callback Usage</h3>
-                    <pre><code data-trim>
+                    <pre><code data-trim class="line-numbers">
 var fs = require('fs');
 
 fs.readFile(
@@ -900,6 +903,10 @@ alert('Resolved with value=' + value);
                             src:   '../common/plugin/repl/repl.js',
                             async: true,
                             condition: function () { return !!document.querySelector('pre code.eval'); }
+                        },
+                        {
+                            src:   '../common/lib/js/line-numbers.js',
+                            condition: function () { return !!document.querySelector('pre code.line-numbers'); }
                         }
                     ]
                 });
