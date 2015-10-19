@@ -615,20 +615,17 @@ aggregatePromise.then(
             <!--*************************************************************-->
 
             <section>
-                <h3>Converting from Callbacks to Promises</h3>
+                <h3>Converting Callbacks to Promises</h3>
+                <p class="center"><small>(The old way)</small></p>
                 <pre><code data-trim>
 var fs = require('fs'),
-    q = require('q');
+    q  = require('q');
 
 function promiseReadFile(fileName) {
     var dfd = q.defer();
 
     fs.readFile(fileName, function (err, data) {
-        if (err)
-        {
-            dfd.reject(err);
-            return;
-        }
+        if (err) { return dfd.reject(err); }
 
         dfd.resolve(data);
     });
@@ -645,6 +642,37 @@ function promiseReadFile(fileName) {
                         <li>This is how you will create a promise in the first couple
                             of exercises.
                         </li>
+                    </ul>
+                </aside>
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                <h3>Converting Callbacks to Promises</h3>
+                <p class="center"><small>(The new way)</small></p>
+                <pre><code data-trim>
+function promiseReadFile(fileName) {
+    var promise = new Promise(
+        function (resolve, reject) {
+            fs.readFile(
+                'myfile.txt',
+                function (err, data) {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(data);
+                }
+            );
+        }
+    );
+    return promise;
+}
+                </code></pre>
+                <aside class="notes">
+                    <ul>
+                        <li>Call Promise constructor</li>
+                        <li>Function passed in is the "context" for resolving the promise</li>
                     </ul>
                 </aside>
             </section>
