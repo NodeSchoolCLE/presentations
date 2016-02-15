@@ -220,7 +220,7 @@
                     Iterating arrays, objects, & strings
                 </section>
                 <section>
-                    <pre><code data-trim>
+                    <pre><code data-trim class="javascript">
 //Arrays
 _([1, 2]).forEach(function(value) {
   console.log(value);
@@ -246,7 +246,7 @@ _.forEach('lololodash', function(letter) {
                 </section>  
                           
                  <section>
-                    <pre><code data-trim>
+                    <pre><code data-trim class="javascript">
 //Manipulating
 var companies = ['LeanDog', 'Rockwell Automation']
 
@@ -272,7 +272,7 @@ _.filter(users, { 'age': 36, 'active': true });
                 </section>                
 
                  <section>
-                    <pre><code data-trim>
+                    <pre><code data-trim class="javascript">
 var users = [
   { 'user': 'barney',  'age': 36 },
   { 'user': 'fred',    'age': 40 },
@@ -313,7 +313,7 @@ var youngest = _
             <section  class="center"> 
                 <section>
                     Often, Lodash is easier to read
-                    <pre><code data-trim>
+                    <pre><code data-trim class="javascript">
 // native
 if (haystack.indexOf("needle") !== -1) { }
 
@@ -322,7 +322,7 @@ if (_.includes(haystack, "needle") { }
 // NOTE: includes is coming in ES7 (ECMAScript 2016)
                     </code></pre>
                     
-                     <pre><code data-trim>
+                     <pre><code data-trim class="javascript">
 // native
 for (var prop in obj) {
     if (obj.hasOwnProperty(prop)) {
@@ -375,7 +375,7 @@ _.forOwn(obj, function(prop, key) {
             
             <!--*************************************************************-->
 
-            <section>                
+            <section class="center">                
                 <section class="center">
                     <h2>what can it do?</h2>
                 </section>
@@ -400,22 +400,27 @@ _.forOwn(obj, function(prop, key) {
                     <h3>some favorites</h3>
                 </section>
                 <section>
-                    <pre><code data-trim>
+                    
+                    Reduce
+                    <pre><code data-trim class="javascript">
                         
-// Basic for loop.
-for(var i = 0; i < 5; i++) {
-    // ....
-}
+var developers = [
+    { name: "Joe", age: 23 },
+    { name: "Sue", age: 28 },
+    { name: "Jon", age: 32 },
+    { name: "Bob", age: 24 }
+], age = 0;
 
-// Lodash
-_.times(5, function(){
-    // ...
-});
+age = developers.reduce(function(memo, developer) {
+    return memo + developer.age; 
+}, 0); // initialize age with 0
+
                     </code></pre>
                 </section>
+              
                 <section>
-                    <pre><code data-trim>
-// Fetch the name of the first pet from each owner
+                    Map
+                    <pre><code data-trim class="javascript">
 var ownerArr = [{
     "owner": "Colin",
     "pets": [{"name":"dog1"}, {"name": "dog2"}]
@@ -435,8 +440,10 @@ _.map(ownerArr, 'pets[0].name');
                 </section>
                 
                  <section>
-                    <pre><code data-trim>
-// Create an array of length 6 and populate them with unique values. The value must be prefix with "ball_".
+                     Times (loop) and UniqueId
+                    <pre ><code data-trim class="javascript">
+// Create an array of length 6 and populate them with unique values. 
+// The value must be prefix with "ball_".
 // eg. [ball_0, ball_1, ball_2, ball_3, ball_4, ball_5]
 
 // Array's map method.
@@ -450,7 +457,8 @@ _.times(6, _.uniqueId.bind(null, 'ball_'));
                 </section>               
                 
                 <section>
-                    <pre><code data-trim>
+                    Random
+                    <pre><code data-trim class="javascript">
 // Get a random number between 15 and 20.
 
 // Naive utility method
@@ -466,7 +474,8 @@ _.random(15, 20);
                 </section> 
                          
                 <section>
-                    <pre><code data-trim>
+                    Assign
+                    <pre><code data-trim class="javascript">
 // Extending an Object
 var objA = {"name": "colin", "car": "suzuki"};
 var objB = {"name": "james", "age": 17};
@@ -477,7 +486,8 @@ _.assign(objA, objB);
                 </section>  
                 
                 <section>
-                    <pre><code data-trim>
+                    Omit
+                    <pre><code data-trim class="javascript">
 // Remove an array of keys from object
 
 var objA = {"name": "colin", "car": "suzuki", "age": 17};
@@ -487,7 +497,8 @@ objA = _.omit(objA, ['car', 'age']); // {"name": "colin"}
                 </section> 
                 
                 <section>
-                    <pre><code data-trim>
+                    Attempt
+                    <pre><code data-trim class="javascript">
 // Using try-catch to handle the JSON.parse error
 function parse(str){
     try {
@@ -507,7 +518,8 @@ function parse(str){
                 </section> 
                 
                 <section>
-                    <pre><code data-trim>
+                    Defaults
+                    <pre><code data-trim class="javascript">
 // Defaults
 var default = { 'user': 'barney', 'age': 36 }
 
@@ -519,11 +531,15 @@ _.defaults({'user': 'fred'}, default);
                 <section>
                     <h3>Check out some other goodies</h3>
                     <ul>
-                        <li>_.throttle / _.debounce</li>
-                        <li>_.forIn / _.forOwn</li>
+                        <li>_.clone / _.cloneDeep</li>     
+                        <li>_.results</li>      
+                        <li>_.sortBy</li>
+                        <li>_.groupBy</li> 
+                        <li>_.some / _.every</li>
                         <li>_.sample</li>
                         <li>_.template</li>
-                        <li>_.cloneDeep</li>                 
+                        <li>_.merge</li>
+                        <li>_.throttle / _.debounce</li>   
                     </ul>
                 </section> 
             </section>        
@@ -531,10 +547,59 @@ _.defaults({'user': 'fred'}, default);
             
             <!--*************************************************************-->
 
-            <section>                
-                <section class="center">
-                    <h2>what about underscore?</h2>
+            <section class="center">   
+                <h3>What about underscore?</h3>           
+                <section></section>
+                <section>
+                    <p>Underscore is now a subset of Lodash</p>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            Underscore vs. Lodash
+                        </a>
+                    </small>
                 </section>
+                <section>
+                    <p>Lodash is more performant</p>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            Underscore vs. Lodash
+                        </a>
+                    </small>
+                </section>
+                <section>
+                    <p>Lodash has a more active community</p>
+                    <p><img src="images/community.png" alt=""></p>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            Underscore vs. Lodash
+                        </a>
+                    </small>
+                </section>
+                <section>
+                    <p>Lodash is growing faster</p>
+                    <p><img src="images/vs.png" alt=""></p>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            Underscore vs. Lodash
+                        </a>
+                    </small>
+                </section>
+                <section>
+                    <p>Backbone</p>
+                    <aside class="notes">
+                        <ul>
+                            <li>Was about the only reason to keep Underscore</li>
+                            <li>Previous Lodash, could swap in woth work</li>
+                            <li>But with 4.x, Core loibray is API compatable</li>
+                            <li>No reason not to switch</li>
+                        </ul>
+                    </aside>
+                </section>
+
             </section>
             
             <!--*************************************************************-->
@@ -610,6 +675,11 @@ $ lololodash verfiy exercise1.js
                         <a href="https://twitter.com/jdalton">
                             John-David Dalton's Twitter Profile
                         </a>
+                    </li>
+                    <li>
+                        <a href="http://elijahmanor.com/reducing-filter-and-map-down-to-reduce/">
+                            Reducing Filter and Map Down to Reduce
+                        </a>(Elijah Manor)
                     </li>
                     
                 </ul>
