@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>NodeSchool Cleveland - Lololodash</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../common/css/reveal.css">
+    <link rel="stylesheet" href="../common/css/theme/serif.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../common/lib/css/zenburn.css">
+
+    <style type="text/css">
+        /*.terminal { text-align: left; }
+         text editor styles */
+        .terminal {
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+            clear: both;
+            overflow: hidden;
+            -webkit-transition: all 0.5s ease-out;
+            -moz-transition: all 0.5s ease-out;
+            -ms-transition: all 0.5s ease-out;
+            -o-transition: all 0.5s ease-out;
+            transition: all 0.5s ease-out;
+        }
+
+        .terminal-title {
+            padding: 5px 0 !important;
+            font-family: "Lucida Grande", sans-serif !important;
+            font-size: 0.75em !important;
+            color: black;
+            text-align: center;
+            text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
+            background-color: #f8f8f8;
+            background-image: -webkit-linear-gradient(top, #e8e8e8, #bcbbbc);
+            background-image: -moz-linear-gradient(top, #e8e8e8, #bcbbbc);
+            background-image: linear-gradient(top, #e8e8e8, #bcbbbc);
+            box-shadow: inset rgba(255, 255, 255, 0.7) 0px 1px 1px;
+            border-bottom: #6a6a6a 1px solid;
+        }
+
+        .terminal-text {
+            height: 250px;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 10px;
+            color: #f0f0f0;
+            text-shadow: #000 0px 1px 0px;
+            font-family: "Consolas", "Courier New", "Courier";
+            font-size: 1.75em;
+            line-height: 1.40em;
+            font-weight: 500;
+            text-align: left;
+            overflow: hidden;
+            -webkit-transition: all 0.5s ease-out;
+            -moz-transition: all 0.5s ease-out;
+            -ms-transition: all 0.5s ease-out;
+            -o-transition: all 0.5s ease-out;
+            transition: all 0.5s ease-out;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="../common/css/layout.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../common/css/print/pdf.css' : '../common/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../common/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <!--*************************************************************-->
+
+            <section>
+                <h4>NodeSchool Cleveland</h4>
+                <h4>February 15, 2016</h4>
+                <h2>Lololodash</h2>
+                <h6>
+                    <small>Thanks to our sponsors</small>
+                </h6>
+                <div class="flex-row">
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/leandog.png"/>
+                    </span>
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/rockwell.jpg"/>
+                    </span>
+                </div>
+                <aside class="notes">
+                    <ul>
+                        <li>Thanks Lean Dog</li>
+                        <li>Restrooms</li>
+                        <li>Food and drinks</li>
+                        <li>Thanks Rockwell Automation</li>
+                        <li>Why are we here?</li>
+                        <ul>
+                            <li>Pair</li>
+                            <li>Help those around you</li>
+                        </ul>
+                    </ul>
+                </aside>
+            </section>
+            <!--*************************************************************-->
+            <section>
+                <p class="center"><h4>Tonight's workshopper...</h4></p>
+                <h2>Lololodash</h2>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Format - this quick talk, then lets workshopper!</li>
+                        <li>Please interrupt</li>
+                    </ul>
+                </aside>
+            </section>
+            <!--*************************************************************-->
+            <section>                
+                <section class="center">
+                    <h2>Why Lodash?</h2>
+                </section>
+                
+                <section class="center">
+                    <img src="images/coolkids.jpg"/>
+                </section>
+                
+                <section  class="center">
+                    <h2>for real</h2>
+                </section>
+               
+                <section class="center">
+                    <h3>Most depended upon npm package</h3>
+                    <img src="images/npmrank.jpg" alt=""/>
+                    <small>
+                        Source:
+                        <a href="https://gist.github.com/anvaka/8e8fa57c7ee1350e3491#file-01-most-dependent-upon-md%0A">
+                            Npm Rank
+                        </a>
+                    </small>
+                </section>
+                
+                <section class="center">
+                    <h3>Developer Survey</h3>
+                    <img src="images/survey.png" alt=""/>
+                    <small>
+                        Source:
+                        <a href="https://ponyfoo.com/articles/javascript-developer-survey-results">
+                            Pony Foo JavaScript Developer Survey
+                        </a>
+                    </small>
+                </section>
+                
+                <section class="center">
+                    <h3>Npm Downloads Stats</h3>
+                    <img src="images/downloads.jpg" alt=""/>
+                    <small>
+                        Source:
+                        <a href="http://npm-stat.com/charts.html?package=lodash">
+                            Npm Downloads
+                        </a>
+                    </small>
+                </section>
+                
+                <section class="center">
+                    <h4>Lodash is the fastest growing npm package with ~1,000 new dependents each month</h4>
+                    <img src="images/growth.jpg" alt=""/>
+                    <p>
+                        <small>
+                            Source:
+                            <a href="https://anvaka.github.io/npmrank.vis/">
+                                Npm Rank Visualizations
+                            </a>
+                        </small>
+                    </p>
+                </section>
+            </section>
+        
+            <!--*************************************************************-->
+
+            <section class="center"> 
+                <h3>But seriously, what is it good for?</h3>
+                <section></section>            
+                <section>
+                    <blockquote>
+                        Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, 
+                        objects, strings, etc.
+                    </blockquote>
+                    <aside class="notes">
+                        <ul>
+                            <li>Runs in client and server (node)</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    Iterating arrays, objects, & strings
+                </section>
+                <section>
+                    Arrays
+                    <pre><code data-trim class="javascript">
+//Arrays
+_([1, 2]).forEach(function(value) {
+  console.log(value);
+});
+// → logs `1` then `2
+                    </code></pre>
+                    Ojects
+                    <pre><code data-trim class="javascript">
+//Objects
+_.forEach({ 'a': 1, 'b': 2 }, function(value, key) {
+  console.log(key);
+});
+// → logs 'a' then 'b'
+
+                    </code></pre>
+                    <aside class="notes">
+                        <ul>
+                            <li>Strings - for each character</li>
+                        </ul>
+                    </aside>
+                </section>
+                
+                <section>
+                     Manipulating & testing values
+                </section>  
+                          
+                 <section>
+                     Manipulating
+                    <pre><code data-trim class="javascript">
+var companies = ['LeanDog', 'Rockwell Automation']
+
+_.map(companies, function(company) {
+  return ('Thanks ' + company);
+});
+// → ["Thanks LeanDog", "Thanks Rockwell Automation"]
+
+                    </code></pre>
+                    Testing
+                                        <pre><code data-trim class="javascript">
+var users = [
+  { 'user': 'barney', 'age': 36, 'active': true },
+  { 'user': 'fred',   'age': 40, 'active': false }
+];
+
+_.filter(users, { 'age': 36, 'active': true });
+// → object for ['barney']
+                    </code></pre>
+                    
+                </section>
+                                         
+
+                <section>
+                    Creating composite functions
+                </section>                
+
+                 <section>
+                    <pre><code data-trim class="javascript">
+var users = [
+  { 'user': 'barney',  'age': 36 },
+  { 'user': 'fred',    'age': 40 },
+  { 'user': 'pebbles', 'age': 1 }
+];
+
+var youngest = _
+  .chain(users)
+  .sortBy('age')
+  .map(function(o) {
+    return o.user + ' is ' + o.age;
+  })
+  .head()
+  .value();
+// → 'pebbles is 1'
+                    </code></pre>
+                </section>
+            </section>
+            
+            <!--*************************************************************-->
+
+            <section class="center">                
+                <h3>But do I really need it?</h3>
+                <section></section>
+                <section>Not always</section>  
+                <section>
+                    Many Lodash functions are available in native JavaScript
+                    <aside class="notes">
+                        <ul>
+                            <li>_.filter</li>
+                            <li>_.map</li>
+                            <li>_.forEach</li>
+                            <li>_.reduce</li>
+                        </ul>
+                    </aside>
+                </section>
+            </section>
+            <section  class="center"> 
+                <section>
+                    Often, Lodash is easier to read
+                    <pre><code data-trim class="javascript">
+// native
+if (haystack.indexOf("needle") !== -1) { }
+
+// lodash
+if (_.includes(haystack, "needle") { }
+// NOTE: includes is coming in ES7 (ECMAScript 2016)
+                    </code></pre>
+                    
+                     <pre><code data-trim class="javascript">
+// native
+for (var prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+        console.log(obj[prop]);
+    }
+}
+
+// lodash
+_.forOwn(obj, function(prop, key) {
+    console.log(prop);
+});
+
+                    </code></pre>
+                </section>
+                <section>
+                    <img src="images/faster.jpg" alt=""/>
+                </section>
+                <section>                    
+                    <blockquote>
+                        By avoiding slower native methods, we’re able to add functionality, 
+                        and sidestep common performance and consistency traps. 
+                    </blockquote>
+                    <small>
+                        Source:
+                        <a href="http://kitcambridge.be/blog/say-hello-to-lo-dash/">
+                            Say Hello to Lo-Dash
+                        </a>
+                    </small>
+                
+                    <aside class="notes">
+                        <ul>
+                            <li>Other libraries use native when it exists</li>
+                            <li>lodash only uses native if it knows it is best</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    <h3>It's gotta be heavy!</h3>   
+                </section>
+                <section>
+                    <p>
+                        <h3>Staring with v4.x</h3>
+                    </p>
+                    <ul>
+                        <li>Core build (~4 kB gzipped)</li>
+                        <li>Full build (~20 kB gzipped)</li>
+                    </ul>          
+                </section>
+                <section>
+                    <h3>Also in v4.x</h3>
+                    <img src="images/modules.png" alt=""/>
+                    <aside class="notes">
+                        <ul>
+                            <li>Bring in what you need if size is a concern</li>
+                            <li>in Node - can require in functions</li>
+                        </ul>
+                    </aside>
+                </section>
+            </section>
+            
+            <!--*************************************************************-->
+
+            <section class="center">                
+                <section class="center">
+                    <h2>what can it do?</h2>
+                </section>
+                <section class="center">
+                    <img src="images/batman.gif"/>
+                    <aside class="notes">
+                        <ul>
+                            <li>almost too much</li>
+                            <li>overwhelming</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section class="center">
+                    <img src="images/lots.jpg"/>
+                    <aside class="notes">
+                        <ul>
+                            <li>almost 300 functions</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    <h3>some favorites</h3>
+                </section>
+                <section>
+                    
+                    Reduce
+                    <pre><code data-trim class="javascript">
+                        
+var developers = [
+    { name: "Joe", age: 23 },
+    { name: "Sue", age: 28 },
+    { name: "Jon", age: 32 },
+    { name: "Bob", age: 24 }
+], age = 0;
+
+age = _.reduce(developers, function(memo, developer) {
+    return memo + developer.age; 
+}, 0); // initialize age with 0
+
+                    </code></pre>
+                </section>
+              
+                <section>
+                    Map
+                    <pre><code data-trim class="javascript">
+var ownerArr = [{
+    "owner": "Colin",
+    "pets": [{"name":"dog1"}, {"name": "dog2"}]
+}, {
+    "owner": "John",
+    "pets": [{"name":"dog3"}, {"name": "dog4"}]
+}];
+
+// Array's map method.
+ownerArr.map(function(owner){
+   return owner.pets[0].name;
+});
+
+// Lodash
+_.map(ownerArr, 'pets[0].name');
+                    </code></pre>
+                </section>
+                
+                 <section>
+                     Times (loop) and UniqueId
+                    <pre ><code data-trim class="javascript">
+// Create an array of length 6 and populate them with unique values. 
+// The value must be prefix with "ball_".
+// eg. [ball_0, ball_1, ball_2, ball_3, ball_4, ball_5]
+
+// Array's map method.
+Array.apply(null, Array(6)).map(function(item, index){
+    return "ball_" + index;
+});
+
+// Lodash
+_.times(6, _.uniqueId.bind(null, 'ball_'));
+                    </code></pre>
+                </section>               
+                
+                <section>
+                    Random
+                    <pre><code data-trim class="javascript">
+// Get a random number between 15 and 20.
+
+// Naive utility method
+function getRandomNumber(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+getRandomNumber(15, 20);
+
+// Lodash
+_.random(15, 20);
+                    </code></pre>
+                </section> 
+                         
+                <section>
+                    Assign
+                    <pre><code data-trim class="javascript">
+// Extending an Object
+var objA = {"name": "colin", "car": "suzuki"};
+var objB = {"name": "james", "age": 17};
+
+_.assign(objA, objB);
+// {"name": "james", "age": 17, "car": "suzuki"};
+                    </code></pre>
+                </section>  
+                
+                <section>
+                    Omit
+                    <pre><code data-trim class="javascript">
+// Remove an array of keys from object
+
+var objA = {"name": "colin", "car": "suzuki", "age": 17};
+
+objA = _.omit(objA, ['car', 'age']); // {"name": "colin"}
+                    </code></pre>
+                </section> 
+                
+                <section>
+                    Attempt
+                    <pre><code data-trim class="javascript">
+// Using try-catch to handle the JSON.parse error
+function parse(str){
+    try {
+        return JSON.parse(str);
+    }
+
+    catch(e) {
+        return false;
+    }
+}
+
+// With Lodash
+function parse(str){
+    return _.attempt(JSON.parse.bind(null, str));
+}
+                    </code></pre>
+                </section> 
+                
+                <section>
+                    Defaults
+                    <pre><code data-trim class="javascript">
+// Defaults
+var default = { 'user': 'barney', 'age': 36 }
+
+_.defaults({'user': 'fred'}, default);
+// → { 'user': 'fred', 'age': 36 }
+                    </code></pre>
+                </section>  
+                
+                <section>
+                    <h3>Check out some other goodies</h3>
+                    <ul>
+                        <li>_.clone / _.cloneDeep</li>     
+                        <li>_.results</li>      
+                        <li>_.sortBy</li>
+                        <li>_.groupBy</li> 
+                        <li>_.some / _.every</li>
+                        <li>_.sample</li>
+                        <li>_.template</li>
+                        <li>_.merge</li>
+                        <li>_.throttle / _.debounce</li>   
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>you'll see a lot of these in teh workshopper</li>
+                        </ul>
+                    </aside>
+                </section> 
+            </section>        
+                    
+            
+            <!--*************************************************************-->
+
+            <section class="center">   
+                <h3>What about Underscore?</h3>           
+                <section></section>
+                <section>
+                    <p>Underscore is now a subset of Lodash</p>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            Underscore vs. Lodash
+                        </a>
+                    </small>
+                </section>
+                <section>
+                    <p>Lodash is more performant</p>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            Underscore vs. Lodash
+                        </a>
+                    </small>
+                </section>
+                <section>
+                    <p>Lodash has a more active community</p>
+                    <p><img src="images/community.png" alt=""></p>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            Underscore vs. Lodash
+                        </a>
+                    </small>
+                </section>
+                <section>
+                    <p>Lodash is growing faster</p>
+                    <p><img src="images/vs.png" alt=""></p>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            Underscore vs. Lodash
+                        </a>
+                    </small>
+                </section>
+                <section>
+                    <p>Backbone</p>
+                    <aside class="notes">
+                        <ul>
+                            <li>Was about the only reason to keep Underscore</li>
+                            <li>Previous Lodash, could swap in woth work</li>
+                            <li>But with 4.x, Core library is API compatable</li>
+                            <li>No reason not to switch</li>
+                        </ul>
+                    </aside>
+                </section>
+
+            </section>
+            
+            <!--*************************************************************-->
+
+            <section>
+                <section class="center">                
+                    <a href="https://github.com/underdash/underdash/issues/14" target="blank">
+                        <img src="images/thisjustin.jpg"/>
+                    </a>
+                </section>
+                <section class="center"> 
+                    <img src="images/merge.jpg"/>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            John-David Dalton on Github in the merge repo
+                        </a>
+                    </small>
+                </section>
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                <h3>Let's get started</h3>
+
+                    <p>To get setup:</p>
+                    <pre><code class="bash">
+$ mkdir lololodash && cd lololodash
+$ npm install lodash
+$ npm install -g lololodash
+                    </code></pre>
+
+                <p>
+                    To run:
+                </p>
+                <pre><code class="bash">
+$ lololodash
+$ lololodash run exercise1.js
+$ lololodash verfiy exercise1.js
+                </code></pre>
+
+                <p>
+                    This presentation: <br/>
+                    <a href="http://bit.ly/nsclepresentations">http://bit.ly/nsclepresentations</a>
+                </p>
+                
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                <h3>References</h3>
+                <ul>
+                    <li>
+                        <a href="https://lodash.com/">Lodash Website</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lodash/lodash/wiki/Changelog">Changelog</a>
+                    </li>
+                    <li>
+                        <a href="http://colintoh.com/blog/lodash-10-javascript-utility-functions-stop-rewriting">
+                            10 Javascript Utility Functions That You Should Probably Stop Rewriting
+                        </a> (Colin Toh)
+                    </li>
+                    <!--http://codemill.studio-connect.com/2013/01/5-lo-dash-functions-for-fun-profit/-->
+                    <li>
+                        <a href="http://stackoverflow.com/questions/13789618/differences-between-lodash-and-underscore">
+                            Differences between lodash and underscore
+                        </a> (Stack Overflow - answered by Lodash's creator)
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/jdalton">
+                            John-David Dalton's Twitter Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://elijahmanor.com/reducing-filter-and-map-down-to-reduce/">
+                            Reducing Filter and Map Down to Reduce
+                        </a>(Elijah Manor)
+                    </li>
+                    
+                </ul>
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                <h1>Thank You!</h1>
+                <div class="flex-row">
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/leandog.png"/>
+                    </span>
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/rockwell.jpg"/>
+                    </span>
+                </div>
+                <aside class="notes">
+                    <ul>
+                        <li>Rather then survey, RSVP on Meetup.com. We'll use RSVP's' to set priority</li>
+                        <li><a href="http://www.meetup.com/NodeSchool-Cleveland/">Link</a></li>
+                    </ul>
+                </aside>
+            </section>
+
+        </div>
+    </div>
+
+
+    <!--
+    Example: How to do a terminal window
+    <div class="terminal">
+        <div class="terminal-title">terminal - 86 x 29</div>
+        <div class="terminal-text type-text" title="npm init \n npm install &#45;&#45;save q \n npm install -g promise-it-wont-hurt \n"></div>
+    </div>-->
+
+    <!--*************************************************************-->
+
+    <!--
+    An example of using the Repl plugin:
+    -->
+
+    <!--
+    <section>
+        <pre><code class="eval language-javascript" contenteditable>
+function longOperation () {
+var delay = 3 * 1000,
+dfd = Q.defer();
+
+setTimeout(
+function () {
+    dfd.resolve(delay);
+}, delay);
+
+return dfd.promise;
+}
+
+var promise = longOperation();
+promise.then(
+function (value) {
+alert('Resolved with value=' + value);
+});
+        </code></pre>
+        <pre><code class="echo language-javascript"> </code></pre>
+    </section>
+    -->
+
+
+    <script src="../common/lib/js/head.min.js"></script>
+    <script src="../common/js/reveal.js"></script>
+
+    <script src="../common/js/jquery-1.11.3.min.js"></script>
+    <script src="../common/js/jquery.teletype.min.js"></script>
+    <script src="../common/js/q.js"></script>
+
+    <script>
+        /*
+
+         $( function() {
+         $( '.type-text' ).each( function() {
+         var items = $( this ).text();
+         $( this ).empty().attr( 'title', '' ).teletype( {
+         text: $.map( items.split( ';' ), $.trim ), // List of strings to output.
+         typeDelay: 10, // Minimum delay, in ms, between typing characters.
+         backDelay: 20, // Minimum delay, in ms, between deleting characters.
+         blinkSpeed: 1000, // Interval, in ms, that the cursor will flash.
+         cursor: '▋', // Character used to represent the cursor.
+         delay: 3000, // Time in ms to pause before deleting the current text.
+         preserve: false, // Prevent auto delete of the current string and begin outputting the next string.
+         prefix: '$ ', // Begin each string with this prefix value.
+         loop: 0, // Number of times to loop through the output strings, for unlimited use 0.
+         humanise: true // Add a random delay before each character to represent human interaction.
+         } );
+         } );
+         } );
+
+         */
+
+        Reveal.addEventListener(
+                'slidechanged', function (event) {
+                    // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+                    $(event.currentSlide).find(".type-text").each(
+                            function () {
+                                var items = $(this).attr('title');
+                                $(this).empty().teletype(
+                                        {
+                                            text:       $.map(
+                                                    items.split(';'), $.trim), // List of strings to output.
+                                            typeDelay:  40, // Minimum delay, in ms, between typing characters.
+                                            backDelay:  20, // Minimum delay, in ms, between deleting characters.
+                                            blinkSpeed: 1000, // Interval, in ms, that the cursor will flash.
+                                            cursor:     '▋', // Character used to represent the cursor.
+                                            delay:      3000, // Time in ms to pause before deleting the current text.
+                                            preserve:   true, // Prevent auto delete of the current string and begin outputting the next string.
+                                            prefix:     '$ ', // Begin each string with this prefix value.
+                                            loop:       1, // Number of times to loop through the output strings, for unlimited use 0.
+                                            humanise:   true // Add a random delay before each character to represent human interaction.
+                                        });
+                            });
+
+                });
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize(
+                {
+                    //width: 1920,
+                    //height: 958,
+
+                    controls: true,
+                    progress: true,
+                    history:  true,
+                    center:   true,
+
+                    transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                    // Optional reveal.js plugins
+                    dependencies: [
+                        {
+                            src:       'lib/js/classList.js',
+                            condition: function () { return !document.body.classList; }
+                        },
+                        {
+                            src:       '../common/plugin/markdown/marked.js',
+                            condition: function () { return !!document.querySelector('[data-markdown]'); }
+                        },
+                        {
+                            src:       '../common/plugin/markdown/markdown.js',
+                            condition: function () { return !!document.querySelector('[data-markdown]'); }
+                        },
+                        {
+                            src:       '../common/plugin/highlight/highlight.js',
+                            async:     true,
+                            condition: function () { return !!document.querySelector('pre code'); },
+                            callback:  function () { hljs.initHighlightingOnLoad(); }
+                        },
+                        {
+                            src:   '../common/plugin/zoom-js/zoom.js',
+                            async: true
+                        },
+                        {
+                            src:   '../common/plugin/notes/notes.js',
+                            async: true
+                        },
+                        {
+                            src:   '../common/plugin/repl/repl.js',
+                            async: true,
+                            condition: function () { return !!document.querySelector('pre code.eval'); }
+                        }
+                    ]
+                });
+
+        Reveal.configure(
+                {
+                    slideNumber: true
+                }
+        );
+
+    </script>
+
+</body>
+</html>

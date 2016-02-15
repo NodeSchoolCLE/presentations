@@ -1,0 +1,43 @@
+.reveal .slides {
+    text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.box {
+    border: 3px solid rgba(0, 0, 0, 0.75) !important;
+    border-radius: 10px;
+}
+
+section[data-background] h2{
+    color: white;
+}
+
+.emoji {
+    max-height: 50px !important;
+    max-width: 50px  !important;
+    border: none     !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.spacer-lg {
+    min-height: 20px;
+    min-width:  20px;
+}
