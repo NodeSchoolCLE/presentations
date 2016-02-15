@@ -127,8 +127,8 @@
             </section>
             <!--*************************************************************-->
             <section>
-                <p class="center"><small>Tonight's workshopper...</small></p>
-                <h2>Lololodash</h2>
+                <p class="center"><h4>Tonight's workshopper...</h4></p>
+                <h1>Lololodash</h1>
 
                 <aside class="notes">
                     <ul>
@@ -141,47 +141,256 @@
             </section>
             <!--*************************************************************-->
             <section>                
-                <section>
+                <section class="center">
                     <h2>Why Lodash?</h2>
                 </section>
-                <section>
-                    <div class="flex-row justify-main-center">
-                        <div class="flex-item-static">
-                            <img src="images/coolkids.jpg"/>
-                        </div>
-                    </div>
+                
+                <section class="center">
+                    <img src="images/coolkids.jpg"/>
                 </section>
-                <section>
-                    <div class="flex-column">
-                        <div class="flex-item-dynamic">
-                            <p>No, for real!</p>
-                            <ol>
-                                <li>Most depended upon npm package.</li>
-                            </ol>
-                        </div>
-                        <div class="flex-item-static">
-                            <a href="https://gist.github.com/anvaka/8e8fa57c7ee1350e3491#file-01-most-dependent-upon-md%0A">
-                                <img src="images/mostnpm.png" alt=""/>
+                
+                <section  class="center">
+                    <h2>for real</h2>
+                </section>
+               
+                <section class="center">
+                    <h3>Most depended upon npm package</h3>
+                    <img src="images/npmrank.jpg" alt=""/>
+                    <small>
+                        Source:
+                        <a href="https://gist.github.com/anvaka/8e8fa57c7ee1350e3491#file-01-most-dependent-upon-md%0A">
+                            Npm Rank
+                        </a>
+                    </small>
+                </section>
+                
+                <section class="center">
+                    <h3>Developer Survey</h3>
+                    <img src="images/survey.png" alt=""/>
+                    <small>
+                        Source:
+                        <a href="https://ponyfoo.com/articles/javascript-developer-survey-results">
+                            Pony Foo JavaScript Developer Survey
+                        </a>
+                    </small>
+                </section>
+                
+                <section class="center">
+                    <h3>Npm Downloads Stats</h3>
+                    <img src="images/downloads.jpg" alt=""/>
+                    <small>
+                        Source:
+                        <a href="http://npm-stat.com/charts.html?package=lodash">
+                            Npm Downloads
+                        </a>
+                    </small>
+                </section>
+                
+                <section class="center">
+                    <h4>Lodash is the fastest growing npm package with ~1,000 new dependents each month</h4>
+                    <img src="images/growth.jpg" alt=""/>
+                    <p>
+                        <small>
+                            Source:
+                            <a href="https://anvaka.github.io/npmrank.vis/">
+                                Npm Rank Visualizations
                             </a>
-                        </div>
-                    </div>
+                        </small>
+                    </p>
                 </section>
-                    
             </section>
+        
+            <!--*************************************************************-->
 
+            <section class="center"> 
+                <h3>But seriously, what is it good for?</h3>
+                <section></section>            
+                <section>
+                    <blockquote>
+                        Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, 
+                        objects, strings, etc.
+                    </blockquote>
+                </section>
+                <section>
+                    Iterating arrays, objects, & strings
+                </section>
+                <section>
+                    <pre><code data-trim>
+//Arrays
+_([1, 2]).forEach(function(value) {
+  console.log(value);
+});
+// → logs `1` then `2
+
+//Objects
+_.forEach({ 'a': 1, 'b': 2 }, function(value, key) {
+  console.log(key);
+});
+// → logs 'a' then 'b'
+
+//Strings
+_.forEach('lololodash', function(letter) {
+  console.log(letter);
+});
+//logs each character in string individually
+                    </code></pre>
+                </section>
+                
+                <section>
+                     Manipulating & testing values
+                </section>  
+                          
+                 <section>
+                    <pre><code data-trim>
+//Manipulating
+var companies = ['LeanDog', 'Rockwell Automation']
+
+_.map(companies, function(company) {
+  return ('Thanks ' + company);
+});
+// → ["Thanks LeanDog", "Thanks Rockwell Automation"]
+
+//Testing
+var users = [
+  { 'user': 'barney', 'age': 36, 'active': true },
+  { 'user': 'fred',   'age': 40, 'active': false }
+];
+
+_.filter(users, { 'age': 36, 'active': true });
+// → object for ['barney']
+                    </code></pre>
+                </section>
+                                         
+
+                <section>
+                    Creating composite functions
+                </section>                
+
+                 <section>
+                    <pre><code data-trim>
+var users = [
+  { 'user': 'barney',  'age': 36 },
+  { 'user': 'fred',    'age': 40 },
+  { 'user': 'pebbles', 'age': 1 }
+];
+
+var youngest = _
+  .chain(users)
+  .sortBy('age')
+  .map(function(o) {
+    return o.user + ' is ' + o.age;
+  })
+  .head()
+  .value();
+// → 'pebbles is 1'
+                    </code></pre>
+                </section>
+            </section>
+            
+            <!--*************************************************************-->
+
+            <section class="center">                
+                <h3>But do I really need it?</h3>
+                <section></section>
+                <section>Not always</section>  
+                <section>
+                    Many Lodash functions are available in native JavaScript
+                    <aside class="notes">
+                        <ul>
+                            <li>_.filter</li>
+                            <li>_.map</li>
+                            <li>_.forEach</li>
+                            <li>_.reduce</li>
+                        </ul>
+                    </aside>
+                </section>
+            </section>
+            <section  class="center"> 
+                <section>
+                    Often, Lodash is easier to read
+                    <pre><code data-trim>
+// native
+if (haystack.indexOf("needle") !== -1) { }
+
+// lodash
+if (_.includes(haystack, "needle") { }
+// NOTE: includes is coming in ES7 (ECMAScript 2016)
+                    </code></pre>
+                    
+                     <pre><code data-trim>
+// native
+for (var prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+        console.log(obj[prop]);
+    }
+}
+
+// lodash
+_.forOwn(obj, function(prop, key) {
+    console.log(prop);
+});
+
+                    </code></pre>
+                </section>
+                <section>
+                    <img src="images/faster.jpg" alt=""/>
+                </section>
+                <section>                    
+                    <blockquote>
+                        By avoiding slower native methods, we’re able to add functionality, 
+                        and sidestep common performance and consistency traps. 
+                    </blockquote>
+                    <small>
+                        Source:
+                        <a href="http://kitcambridge.be/blog/say-hello-to-lo-dash/">
+                            Say Hello to Lo-Dash
+                        </a>
+                    </small>
+                
+                    <aside class="notes">
+                        <ul>
+                            <li>Other libraries use native when it exists</li>
+                            <li>lodash only uses native if it knows it is best</li>
+                        </ul>
+                    </aside>
+                      
+                </section>
+            </section>
+            
+            <!--*************************************************************-->
+
+            <section>                
+                <section class="center">
+                    <h2>what can it do?</h2>
+                </section>
+                <!--batman-->
+            </section>
+            
+            <!--*************************************************************-->
+
+            <section>                
+                <section class="center">
+                    <h2>what about underscore?</h2>
+                </section>
+            </section>
+            
             <!--*************************************************************-->
 
             <section>
-                <a href="https://github.com/underdash/underdash/issues/14" target="blank">
-                    <img src="images/thisjustin.jpg" width="100%"/>
-                </a>
-                
-                <aside class="notes">
-                    <ul>
-                        <li></li>
-                    </ul>
-                </aside>
-             
+                <section class="center">                
+                    <a href="https://github.com/underdash/underdash/issues/14" target="blank">
+                        <img src="images/thisjustin.jpg"/>
+                    </a>
+                </section>
+                <section class="center"> 
+                    <img src="images/merge.jpg"/>
+                    <small>
+                        Source:
+                        <a href="https://github.com/underdash/underdash/issues/14">
+                            John-David Dalton on Github in the merge repo
+                        </a>
+                    </small>
+                </section>
             </section>
 
             <!--*************************************************************-->
@@ -228,6 +437,7 @@ $ lololodash verfiy exercise1.js
                             10 Javascript Utility Functions That You Should Probably Stop Rewriting
                         </a> (Colin Toh)
                     </li>
+                    <!--http://codemill.studio-connect.com/2013/01/5-lo-dash-functions-for-fun-profit/-->
                     <li>
                         <a href="http://stackoverflow.com/questions/13789618/differences-between-lodash-and-underscore">
                             Differences between lodash and underscore
