@@ -210,6 +210,11 @@
                         Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, 
                         objects, strings, etc.
                     </blockquote>
+                    <aside class="notes">
+                        <ul>
+                            <li>Runs in client and server (node)</li>
+                        </ul>
+                    </aside>
                 </section>
                 <section>
                     Iterating arrays, objects, & strings
@@ -353,7 +358,18 @@ _.forOwn(obj, function(prop, key) {
                             <li>lodash only uses native if it knows it is best</li>
                         </ul>
                     </aside>
-                      
+                </section>
+                <section>
+                    <h3>It's gotta be heavy!</h3>   
+                </section>
+                <section>
+                    <p>
+                        <h3>Staring with v4.x</h3>
+                    </p>
+                    <ul>
+                        <li>Core build (~4 kB gzipped)</li>
+                        <li>Full build (~20 kB gzipped)</li>
+                    </ul>          
                 </section>
             </section>
             
@@ -363,8 +379,155 @@ _.forOwn(obj, function(prop, key) {
                 <section class="center">
                     <h2>what can it do?</h2>
                 </section>
-                <!--batman-->
-            </section>
+                <section class="center">
+                    <img src="images/batman.gif"/>
+                    <aside class="notes">
+                        <ul>
+                            <li>almost too much</li>
+                            <li>overwhelming</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section class="center">
+                    <img src="images/lots.jpg"/>
+                    <aside class="notes">
+                        <ul>
+                            <li>almost 300 functions</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    <h3>some favorites</h3>
+                </section>
+                <section>
+                    <pre><code data-trim>
+                        
+// Basic for loop.
+for(var i = 0; i < 5; i++) {
+    // ....
+}
+
+// Lodash
+_.times(5, function(){
+    // ...
+});
+                    </code></pre>
+                </section>
+                <section>
+                    <pre><code data-trim>
+// Fetch the name of the first pet from each owner
+var ownerArr = [{
+    "owner": "Colin",
+    "pets": [{"name":"dog1"}, {"name": "dog2"}]
+}, {
+    "owner": "John",
+    "pets": [{"name":"dog3"}, {"name": "dog4"}]
+}];
+
+// Array's map method.
+ownerArr.map(function(owner){
+   return owner.pets[0].name;
+});
+
+// Lodash
+_.map(ownerArr, 'pets[0].name');
+                    </code></pre>
+                </section>
+                
+                 <section>
+                    <pre><code data-trim>
+// Create an array of length 6 and populate them with unique values. The value must be prefix with "ball_".
+// eg. [ball_0, ball_1, ball_2, ball_3, ball_4, ball_5]
+
+// Array's map method.
+Array.apply(null, Array(6)).map(function(item, index){
+    return "ball_" + index;
+});
+
+// Lodash
+_.times(6, _.uniqueId.bind(null, 'ball_'));
+                    </code></pre>
+                </section>               
+                
+                <section>
+                    <pre><code data-trim>
+// Get a random number between 15 and 20.
+
+// Naive utility method
+function getRandomNumber(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+getRandomNumber(15, 20);
+
+// Lodash
+_.random(15, 20);
+                    </code></pre>
+                </section> 
+                         
+                <section>
+                    <pre><code data-trim>
+// Extending an Object
+var objA = {"name": "colin", "car": "suzuki"};
+var objB = {"name": "james", "age": 17};
+
+_.assign(objA, objB);
+// {"name": "james", "age": 17, "car": "suzuki"};
+                    </code></pre>
+                </section>  
+                
+                <section>
+                    <pre><code data-trim>
+// Remove an array of keys from object
+
+var objA = {"name": "colin", "car": "suzuki", "age": 17};
+
+objA = _.omit(objA, ['car', 'age']); // {"name": "colin"}
+                    </code></pre>
+                </section> 
+                
+                <section>
+                    <pre><code data-trim>
+// Using try-catch to handle the JSON.parse error
+function parse(str){
+    try {
+        return JSON.parse(str);
+    }
+
+    catch(e) {
+        return false;
+    }
+}
+
+// With Lodash
+function parse(str){
+    return _.attempt(JSON.parse.bind(null, str));
+}
+                    </code></pre>
+                </section> 
+                
+                <section>
+                    <pre><code data-trim>
+// Defaults
+var default = { 'user': 'barney', 'age': 36 }
+
+_.defaults({'user': 'fred'}, default);
+// → { 'user': 'fred', 'age': 36 }
+                    </code></pre>
+                </section>  
+                
+                <section>
+                    <h3>Check out some other goodies</h3>
+                    <ul>
+                        <li>_.throttle / _.debounce</li>
+                        <li>_.forIn / _.forOwn</li>
+                        <li>_.sample</li>
+                        <li>_.template</li>
+                        <li>_.cloneDeep</li>                 
+                    </ul>
+                </section> 
+            </section>        
+                    
             
             <!--*************************************************************-->
 
