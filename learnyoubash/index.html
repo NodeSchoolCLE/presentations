@@ -532,6 +532,186 @@ x=2;{ x=4; }; echo "$x"   # prints 4
 
                 </section>
 
+                <section>
+                    <h2>Expansion and Substitution</h2>
+
+                    <div class="flex-item-dynamic"></div>
+                    <div class="flex-item-static">
+                        <table>
+                            <tr>
+                                <td><code>${VAR}</code></td>
+                                <td>
+                                    Parameter expansion <br>
+                                    Similar to <code>$VAR</code> but with possible transformations
+                                    <p></p>
+                                    <ul>
+                                        <li>Default values</li>
+                                        <li>Indirect variables</li>
+                                        <li>
+                                            <a href="http://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion">More</a></li>
+                                    </ul>
+                                    <pre><code data-noescape data-trim="" class="bash">
+A=${A:-hello}
+                                    </code></pre>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>((&hellip;))</code></td>
+                                <td>
+                                    Arithmetic instruction <br>
+                                    A computation on integers with syntax familiar to other programming languages.
+                                    <br>
+                                    Used primarily in assignments and conditionals.
+                                    <pre><code data-noescape data-trim="" class="bash">
+(( n += 1 ))  # Increment.
+                                    </code></pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>$((&hellip;))</code></td>
+                                <td>
+                                    Arithmetic expression <br>
+                                    Just expands the expression
+                                    <pre><code data-noescape data-trim="" class="bash">
+z=$((z+3))
+                                    </code></pre>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="flex-item-dynamic"></div>
+                </section>
+
+                <section>
+                    <h2>Expansion and Substitution</h2>
+
+                    <div class="flex-item-dynamic"></div>
+                    <div class="flex-item-static">
+
+
+                        <table class="flex-item-static">
+                            <tr>
+                                <td><code>[[ &hellip; ]]</code></td>
+                                <td>
+                                    Test expression <br>
+                                    You need a space inside and outside each bracket <br>
+                                    You need spaces around all operators
+                                    <pre><code data-noescape data-trim="" class="bash">
+if [[ "$varA" == 1 && ("$varB" == "t1" || "$varC" == "t2") ]]; then
+    &vellip;
+fi
+                                        </code></pre>
+
+                                    <div class="flex-row">
+                                        <div class="flex-item-dynamic"></div>
+                                        <div class="flex-item-dynamic border-right">
+                                            <h5 class="left">Numeric operators</h5>
+                                            <code>-eq</code>, <code>-ne</code>
+                                            <br>
+                                            <code>-lt</code>, <code>-le</code>
+                                            <br>
+                                            <code>-gt</code>, <code>-ge</code>
+                                        </div>
+                                        <div class="flex-item-dynamic border-right">
+                                            <h5 class="left">String operators</h5>
+                                            <code>==</code>, <code>!=</code>,
+                                            <br>
+                                            <code>-z</code> null (zero length)
+                                            <br>
+                                            <code>-n</code> not null <br>
+
+                                        </div>
+                                        <div class="flex-item-dynamic">
+                                            <h5 class="left">Filesystem operators</h5>
+                                            <div class="flex-row">
+                                                <div class="flex-item-static pad-right">
+                                                    <code>-e</code> exists <br>
+                                                    <code>-f</code> file exists <br>
+                                                    <code>-d</code> directory exists <br>
+                                                </div>
+                                                <div class="flex-item-static">
+                                                    <code>-h</code> symbolic link exists <br>
+                                                    <code>-s</code> not 0 size <br>
+                                                    <code>-r</code>, <code>-w</code>, <code>-x</code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-item-dynamic"></div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p>
+                            When using <code>==</code> and <code>!=</code>, the right side is a pattern.
+                            <code>[[ "$foo" == a* ]]</code> tests if <code>$foo</code> starts with "a" while
+                            <code>[[ "$foo" == "a*" ]]</code> tests if <code>$foo</code> is exactly "a*".
+                        </p>
+                        <p>
+                            <a href="http://unix.stackexchange.com/questions/131766/why-does-my-shell-script-choke-on-whitespace-or-other-special-characters">
+                                Always use double quotes
+                            </a>
+                            around variable substitutions.  If you don't,
+                            your script will not handle variables that contain whitespace or
+                            <code>\[*?</code> characters well.
+                        </p>
+
+
+                    </div>
+                    <div class="flex-item-dynamic"></div>
+                </section>
+
+            </section>
+
+            <section>
+                <h3>Other topics to explore</h3>
+
+                <div class="flex-row">
+
+                    <div class="flex-item-dynamic"></div>
+                    <div class="flex-item-dynamic">
+                        <div>
+                            Customizing your prompt (PS1)
+                        </div>
+                        <ul class="pad-left">
+                            <li>
+                                <a href="https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh">Git</a>
+                            </li>
+                        </ul>
+
+                        <div class="pad-top">
+                            Commonly used environment variables
+                        </div>
+                        <ul class="pad-left">
+                            <li><code>PATH</code></li>
+                            <li><code>EDITOR</code></li>
+                            <li><code>PS1</code>, <code>PS2</code>, <code>PS3</code>, <code>PS4</code></li>
+                            <li><code>PROMPT_COMMAND</code></li>
+                        </ul>
+
+                        <div class="pad-top">
+                            Aliases
+                        </div>
+                        <ul class="pad-left">
+                            <li>
+                                <a href="https://github.com/Bash-it/bash-it">Bash-it</a>
+                            </li>
+                        </ul>
+
+                        <div class="pad-top">
+                            Command line completion
+                        </div>
+
+                        <div class="pad-top">
+                            Commands
+                        </div>
+
+                    </div>
+
+                </div>
+
             </section>
 
 
