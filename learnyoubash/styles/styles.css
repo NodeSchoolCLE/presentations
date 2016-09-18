@@ -41,3 +41,13 @@ section[data-background] h2{
     min-height: 20px;
     min-width:  20px;
 }
+
+.reveal pre {
+    width: auto;
+}
+
+.reveal pre code {
+    font-size: 175%;
+    max-height: 10000px;
+    line-height: 1.1em;
+}

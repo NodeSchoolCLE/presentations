@@ -94,67 +94,93 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
 
-            <!--*************************************************************-->
-
             <section>
-                <h2>Learn You Bash</h2>
 
-                <div class="flex-column">
-                    <p class="flex-item-static">
-                        Slides: <a href="http://bit.ly/nsclepresentations">http://bit.ly/nsclepresentations</a>
-                    </p>
-                    <p></p>
-                    <h3 class="flex-item-static">
-                        Prerequisites
-                    </h3>
-                    <div class="flex-item-static">
-                        <ol>
-                            <li>Install Node.js <br>
-                                >= 4.0.0 (>= 5.1.0 for Windows)
-                            </li>
-                            <li>Install Bash <br>
-                                On Windows, use GitBash or Cygwin
-                            </li>
-                            <li>Install the workshopper
-                                <pre><code class="bash">
-$ npm install -g learnyoubash
-                            </code></pre>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <h4>NodeSchool Cleveland</h4>
-                <h4>September 19, 2016</h4>
-                <h2>Learn You Bash</h2>
-                <h6>
-                    <small>Thanks to our sponsors</small>
-                </h6>
-                <div class="flex-row">
+                <section>
+                    <h4>NodeSchool Cleveland</h4>
+                    <h4>September 19, 2016</h4>
+                    <h2>Learn You Bash</h2>
+                    <h6>
+                        <small>Thanks to our sponsors</small>
+                    </h6>
+                    <div class="flex-row">
                     <span class="flex-item-dynamic">
                         <img src="../common/images/leandog.png"/>
                     </span>
-                    <span class="flex-item-dynamic">
+                        <span class="flex-item-dynamic">
                         <img src="../common/images/rockwell.jpg"/>
                     </span>
-                </div>
+                    </div>
+                </section>
+
+
+                <section>
+                    <h2>Before We Begin</h2>
+
+
+                    <div class="flex-item-dynamic flex-column">
+                        <p class="flex-item-static">
+                            Slides:
+                            <a href="http://bit.ly/nsclepresentations">http://bit.ly/nsclepresentations</a>
+                        </p>
+                        <p></p>
+
+                        <div class="flex-item-dynamic flex-row">
+                            <div class="flex-item-dynamic flex-column">
+                                <h3 class="left">1. Install Node.js</h3>
+                                <p>>= 4.0.0 (>= 5.1.0 for Windows)</p>
+                            </div>
+
+                            <div class="flex-item-dynamic">
+                                <h3 class="left">2. Install Bash</h3>
+                                <p>
+                                    Mac/Linux: You already have it
+                                </p>
+                                <p>
+                                    Windows:
+                                </p>
+                                <ul>
+                                    <li><a href="https://git-scm.com">Git Bash</a></li>
+                                    <li><a href="https://www.cygwin.com/">Cygwin</a></li>
+                                    <li>
+                                        <a href="https://msdn.microsoft.com/en-us/commandline/wsl/about">Bash on Ubuntu on Windows</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.tutorialspoint.com/execute_bash_online.php">Online Bash shell</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="flex-item-dynamic">
+                                <h3 class="left">3. Install workshopper</h3>
+                                <pre><code data-noescape data-trim="" class="bash">
+$ npm install -g learnyoubash
+                                    </code></pre>
+                            </div>
+
+                        </div>
+
+                        <div class="flex-item-static flex-row">
+                            <div class="flex-item-dynamic"></div>
+                            <img src="images/pizza4.gif" alt="pizza2">
+                            <div class="flex-item-dynamic"></div>
+                        </div>
+
+                    </div>
+
+                </section>
+
             </section>
 
             <!--*************************************************************-->
 
             <section>
-                <section data-background="images/welcome.gif">
+                <section data-background="images/hay.gif">
                     <aside class="notes">
                         <ul>
-                            <li>Thanks Lean Dog</li>
+                            <li>Thanks Lean Dog & Rockwell Automation</li>
                             <li>Restrooms</li>
                             <li>Food and drinks</li>
-                            <li>Thanks Rockwell Automation</li>
                             <li>Why are we here?</li>
                             <ul>
                                 <li>Pair</li>
@@ -166,617 +192,391 @@ $ npm install -g learnyoubash
 
                 <section>
                     <p class="center"><small>Tonight's workshopper...</small></p>
-                    <h2>Promise It Won't Hurt</h2>
+                    <h2>learnyoubash</h2>
 
                     <aside class="notes">
                         <ul>
-                            <li>Based on surevey results from first meetup</li>
-                            <li>More advanced</li>
-                            <li>Different format</li>
                             <li>Please interrupt</li>
                         </ul>
                     </aside>
+
                 </section>
 
             </section>
 
             <!--*************************************************************-->
 
+
             <section>
-                <h1>Promises?</h1>
+                <h1>Why Bash?</h1>
+
+                <div class="flex-row">
+
+                    <div class="flex-item-dynamic"></div>
+                    <div class="flex-item-static">
+
+                        <h3 class="left">1. Why not?</h3>
+                        <div class="flex-row">
+                            <div class="flex-item-static spacer-lg"></div>
+                            <div class="flex-item-static spacer-lg"></div>
+                            <p>
+                                Save time <br>
+                                Prevent mistakes <br>
+                                Document processes
+                            </p>
+                            <div class="flex-item-dynamic"></div>
+                        </div>
+
+                        <p></p>
+
+                        <h3 class="left">2. Because it is used</h3>
+
+                        <p></p>
+
+                        <h3 class="left">3. It is commonly available</h3>
+
+                    </div>
+                    <div class="flex-item-dynamic"></div>
+
+                </div>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Not directly related to Node.js</li>
+                        <li>You will run into it working in open source</li>
+                        <li>Another tool</li>
+                        <li>Please interrupt</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+
                 <section>
-                    <aside class="notes">
-                        <ul>
-                            <li>Popular topic</li>
-                            <li>Using Q, not ES6/2015</li>
-                            <li>Not a big jump</li>
-                        </ul>
-                    </aside>
+                    <h1>The Basics</h1>
                 </section>
-                <section>Why Node.js?
+
+
+                <section>
+
+                    <div class="flex-row">
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <h3>
+                                Packaged as textual source code
+                            </h3>
+
+                            <p>
+                                <code>.bash</code> extension is typical
+                            </p>
+
+                            <p>
+                                Made executable by typical means
+                            </p>
+                            <ol>
+                                <li>
+                                    Shebang line: <br>
+
+                                    <pre><code data-noescape data-trim="" class="bash">
+                                    #!/usr/bin/env bash
+                                    </code></pre>
+
+                                </li>
+                                <li>
+                                    Make the file executable: <br>
+                                    <pre><code data-noescape data-trim="" class="bash">
+                                    chmod +x my-file.bash
+                                    </code></pre>
+                                </li>
+                            </ol>
+
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+
+                    </div>
+
+
                     <aside class="notes">
                         <ul>
-                            <li>To understand the role of promises, need to have
-                                a fundamental understanding of Node
+                            <li>Packaged as source code in a text file
+                                <ul>
+                                    <li>no compiling</li>
+                                    <li>immediate gratification</li>
+                                    <li>Insert normal interactive mode commands</li>
+                                </ul>
+                            </li>
+                            <li>.bash file extension is normal, but not required</li>
+                            <li>To make executable
+                                <ul>
+                                    <li>shebang line</li>
+                                    <li>file permission</li>
+                                </ul>
+                            </li>
+                            <li>
+                                on Windows, use PATHEXT environment variable
                             </li>
                         </ul>
                     </aside>
+
                 </section>
-            </section>
 
-            <!--*************************************************************-->
-
-            <section>
-                <div class="flex-row">
-                    <div class="flex-item-dynamic"></div>
-                    <span class="flex-item-static">
-                        Efficient <br/> Programs
-                    </span>
-                    <div class="flex-item-dynamic"></div>
-                    <span class="flex-item-static">&larr;</span>
-                    <div class="flex-item-dynamic"></div>
-                    <span class="flex-item-static box">
-                        Programming <br/> Environment
-                    </span>
-                    <div class="flex-item-dynamic"></div>
-                    <span class="flex-item-static">&rarr;</span>
-                    <div class="flex-item-dynamic"></div>
-                    <span class="flex-item-static">
-                        Developer <br/> Productivity
-                    </span>
-                    <div class="flex-item-dynamic"></div>
-                </div>
-                <aside class="notes">
-                    <ol>
-                        <li>Programming language/runtime's purpose</li>
-                        <li>Fast was not always a priority
-                            <ol>
-                                <li>No more "free lunch" (2005)</li>
-                                <li>Now we leverage multiple cores</li>
-                            </ol>
-                        </li>
-                        <li>Balancing this is hard - many approaches</li>
-                    </ol>
-                </aside>
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <h3>Node's Approach</h3>
                 <section>
-                    Target the slowest, most difficult parts of a program
+
+                    <p class="center">If we're going to do this...</p>
+                    <h2>let's get serious!</h2>
+                    <pre><code data-noescape data-trim="" class="bash">
+#!/usr/bin/env bash
+
+# file: create-bash.bash
+#
+# This script creates a new Bash script file.
+# It inserts the shebang line and sets the file to be executable.
+#
+# Arguments:
+# $1 The name of the file (typically has .bash extension)
+#
+printf '#!/usr/bin/env bash\n\necho "hello world"' > $1
+chmod +x $1
+                    </code></pre>
+
+                </section>
+
+            </section>
+
+
+            <section>
+                <section>
+                    <h2>What this workshopper will teach you</h2>
+
+                    <div class="flex-row">
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <ul>
+                                <li>Variables</li>
+                                <li>Arrays</li>
+                                <li>Shell expansions</li>
+                                <li>Streams</li>
+                                <li>Pipes</li>
+                            </ul>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <ul>
+                                <li>Lists of commands</li>
+                                <li>Conditionals</li>
+                                <li>Loops</li>
+                                <li>Functions</li>
+                                <li>Debugging</li>
+                            </ul>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                    </div>
                     <aside class="notes">
                         <ul>
-                            <li>Identify the costly operations -- I/O</li>
-                            <li>Target the costly ones and make them async</li>
-                            <li>Dovetail asynchronicity into the rest of the program</li>
+                            <li>These are all fairly standard topics when learning a language</li>
+                            <li>The workshopper does a fairly good job of covering these topics</li>
+                            <li>I want to share the "gotchas"</li>
                         </ul>
                     </aside>
                 </section>
+
                 <section>
+                    <h2>Interactive Mode</h2>
                     <table>
                         <tr>
-                            <th>Access Type</th><th>Cycles</th>
+                            <th>Command</th>
+                            <th>Description</th>
                         </tr>
                         <tr>
-                            <td>L1 Cache</td><td>3</td>
+                            <td><code>history</code></td>
+                            <td>Shows a numbered list of the most recent commands</td>
                         </tr>
                         <tr>
-                            <td>L2 Cache</td><td>14</td>
+                            <td><code>!!</code></td>
+                            <td>Expands with the last command <br>Example: <code>sudo !!</code></td>
                         </tr>
                         <tr>
-                            <td>RAM</td><td>250</td>
+                            <td><code>!&lt;num&gt;</code></td>
+                            <td>Expands with the last command</td>
+                        </tr>
+                        <tr>
+                            <td><code>!str</code></td>
+                            <td>Expands with the last command starting with <code>str</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>!?str?</code></td>
+                            <td>Expands with the last command containing <code>str</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>^orig^repl^</code></td>
+                            <td>Re-executes the last command with <code>orig</code> replaced with <code>repl</code></td>
+                        </tr>
 
-                        </tr>
                         <tr>
-                            <td>Disk</td><td>41 000 000</td>
-                        </tr>
-                        <tr>
-                            <td>Network</td><td>240 000 000</td>
+                            <td><code>ctrl-r</code></td>
+                            <td>Start a backwards incremental search through history</td>
                         </tr>
                     </table>
-                    <aside class="notes">
-                        <ul>
-                            <li>Step 1: ID what programs do.</li>
-                            <li>Huge disparity</li>
-                            <li>Target the slow operations and make them async</li>
-                            <li>Bring asynchronicity back to the programmer in an easy way</li>
-                        </ul>
-                    </aside>
                 </section>
-            </section>
 
-            <!--*************************************************************-->
-
-            <section>
-                <h3>Possible Solutions</h3>
                 <section>
-                    <aside class="notes">
-                        <ul>
-                            <li>Use the right tool for the job</li>
-                        </ul>
-                    </aside>
-                </section>
-                <section>Synchronous programming
-                    <aside class="notes">
-                        <ul>
-                            <li>Super easy</li>
-                            <li>Super slow</li>
-                        </ul>
-                    </aside>
-                </section>
-                <section>Create processes
-                    <aside class="notes">
-                        <ul>
-                            <li>Fairly easy</li>
-                            <li>Interprocess communication</li>
-                            <li>Does not scale</li>
-                        </ul>
-                    </aside>
-                </section>
-                <section>Create threads
-                    <aside class="notes">
-                        <ul>
-                            <li>Lighter than creating processes</li>
-                            <li>Memory -- stack (512 kB)</li>
-                            <li>Eased using thread pools</li>
-                            <li>Thread context switching is prob w/ 10,000 req</li>
-                            <li>Difficult -- locks, race conditions</li>
-                            <li>Apache</li>
-                        </ul>
-                    </aside>
-                </section>
-                <section>Event-Driven, non-blocking architecture
-                    <aside class="notes">
-                        <ul>
-                            <li>Node's approach</li>
-                            <li>A happy middle ground?</li>
-                            <li>Nginx</li>
-                        </ul>
-                    </aside>
-                </section>
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <h3>Cut to the Chase</h3>
-                <section>
-
-                    1 thread for your code.
-
-                    <aside class="notes">
-                        <ul>
-                            <li>Little overhead</li>
-                            <li>10,000 requests service by 1 thread w/o context switching</li>
-                            <li>Developer productivity</li>
-                            <li>No concurrency</li>
-                            <ul>
-                                <li>Not really - child processes, WebWorkers</li>
-                            </ul>
-                        </ul>
-                    </aside>
-                </section>
-                <section>
-                    Node will perform the costly I/O operations using a thread pool.
-                    <aside class="notes">
-                        <ul>
-                            <li>Of no concern to you.</li>
-                            <li>Your completion code will just run.</li>
-                        </ul>
-                    </aside>
-                </section>
-                <section>
+                    <h2>Variable Gotchas</h2>
                     <div class="flex-row">
-                        <div class="flex-item-dynamic">
-                            <p>Recap</p>
-                            <ol>
-                                <li>Your code will never be interrupted.</li>
-                                <li>I/O will  not block</li>
-                            </ol>
-                        </div>
+                        <div class="flex-item-dynamic"></div>
                         <div class="flex-item-static">
-                            <img src="http://i.giphy.com/90F8aUepslB84.gif" alt=""/>
+                            <p>
+                                Variables are preceded with <code>$</code> when they are read, but not when assigned<br>
+                            <pre><code data-noescape data-trim="" class="bash">
+language="Bash"
+echo "Make $language great again."
+                    </code></pre>
+                            </p>
+                            <p>
+                                Also, spaces cannot be placed around the assignment operator (<code>=</code>).
+                            </p>
                         </div>
+                        <div class="flex-item-dynamic"></div>
                     </div>
-                    <p><small>
-                        Source:
-                        <a href="http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/">
-                            http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/
-                        </a>
-                    </small></p>
-                    <aside class="notes">
-                        <ul>
-                            <li>Amazingly cool characteristics</li>
-                            <li>This is great for web servers</li>
-                        </ul>
-                    </aside>
                 </section>
 
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
                 <section>
-                    <h3>So what does this look like?</h3>
-                    <aside class="notes">
-                        <ul>
-                            <li>Node uses callbacks</li>
-                            <li>First class functions</li>
-                            <li>Closures</li>
-                        </ul>
-                    </aside>
+                    <h2>Multiple Commands on a line</h2>
+                    <div class="flex-row">
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <p>Multiple commands must be separated by "<code>;</code>" <br>
+                                <small>You can also string commands together using <code>&&</code> and <code>||</code>.</small>
+                            </p>
+                            <pre><code data-noescape data-trim="" class="bash">
+if [[ &hellip; ]]
+then
+    &hellip;
+fi
+                            </code></pre>
+
+                            <pre><code data-noescape data-trim="" class="bash">
+if [[ &hellip; ]]; then
+    &hellip;
+fi
+                            </code></pre>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                    </div>
                 </section>
+
                 <section>
-                    <h3>Typical Callback Usage</h3>
-                    <pre><code data-trim>
-var fs = require('fs');
+                    <h2>Expansion and Substitution</h2>
 
-fs.readFile(
-    'file1.txt',
-    function (err, data) {
-        if (err) {throw err;}
-        console.log(data);
-    }
-);
-                    </code></pre>
-                    <aside class="notes">
-                        <ul>
-                            <li>Example of using a callback.</li>
-                            <li>Typical Node callback argument convention</li>
-                            <li>But what happens when there's more than one?</li>
-                        </ul>
-                    </aside>
+                    <div class="flex-row">
+
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <table>
+                                <tr>
+                                    <td><code>(&hellip;)</code></td>
+                                    <td>
+                                        Subshell <br>
+                                        Contains commands that are run in a <strong>subprocess</strong>. <br>
+                                        Will not affect the parent process.
+                                        <pre><code data-noescape data-trim="" class="bash">
+x=2; (x=4); echo "$x"  # prints 2
+                                        </code></pre>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>$(&hellip;)</code></td>
+                                    <td>
+                                        Command substitution <br>
+                                        Same as using <code>`&hellip;`</code> (backticks) <br>
+                                        The output of executing the command is used as part of outer command
+                                        <pre><code data-noescape data-trim="" class="bash">
+echo "Hello, $(whoami)"
+                                        </code></pre>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>{ &hellip;; }</code></td>
+                                    <td>
+                                        Parse grouping <br>
+                                        How we normally think of parenthesis. <br>
+                                        Requires spaces around the braces and a closing semicolon.
+                                        <pre><code data-noescape data-trim="" class="bash">
+x=2;{ x=4; }; echo "$x"   # prints 4
+                                        </code></pre>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                    </div>
+
                 </section>
-                <section>
-                    <h3>Mulitple Async Operations - Sequential</h3>
-                    <pre><code data-trim="">
-var fs = require('fs');
 
-fs.readFile(
-    'file1.txt',
-    function (err, data) {
-        if (err) {throw err;}
-
-        fs.readFile(
-            'file2.txt',
-            function (err, data) {
-                if (err) {throw err;}
-                console.log(data);
-            }
-        );
-    }
-);
-                    </code></pre>
-                    <aside class="notes">
-                        <ul>
-                            <li>Error handling is duplicated</li>
-                            <li>Big prob: Not concurrent</li>
-                            <li>"Pyramid of Doom"</li>
-                        </ul>
-                    </aside>
-                </section>
-                <section>
-                    <h3>Multiple Async Operations - Concurrently</h3>
-                    <pre><code data-trim>
-var fs = require('fs'),
-    numCompleted = 0,
-    onFileRead = function (err, data) {
-        if (err) {throw err;}
-
-        numCompleted += 1;
-        if (numCompleted === 2) {
-            // Both async operation have been completed
-        }
-    };
-
-fs.readFile('file1.txt', onFileRead);
-fs.readFile('file2.txt', onFileRead);
-                    </code></pre>
-                    <aside class="notes">
-                        <p>It is concurrent, but...</p>
-                        <ul>
-                            <li>Error handling will be difficult</li>
-                            <li>Mixing control flow logic with app logic</li>
-                            <li>Not composable</li>
-                        </ul>
-                    </aside>
-                </section>
             </section>
 
 
             <!--*************************************************************-->
 
             <section>
-                <section>
-                    <h3>Promises</h3>
-                    <p>
-                        A placeholder for a value that may be available in the future.
-                    </p>
-                    <p>
-                        It will be fulfilled or rejected... <em>once!</em>
-                    </p>
-                    <aside class="notes">
-                        <ul>
-                            <li>Let's see what this looks like...</li>
-                        </ul>
-                    </aside>
-                </section>
-                <section>
-                    <h3>Using a promise</h3>
-                    <pre><code data-trim>
-var file1Promise = readFilePromise('file1.txt');
-file1Promise.then(
-    function onFulfilled(data) {console.log(data);},
-    function onRejected(err) {throw err;}
-);
-                    </code></pre>
-                    <aside class="notes">
-                        <ul>
-                            <li>You register fulfillment and/or rejection handlers with the promise </li>
-                            <li>That's the purpose of then()</li>
-                            <li>Called on next turn of event loop</li>
-                            <li>Similar to our previous callbacks, actually</li>
-                            <li>But now we have file1Promise that can be composed</li>
-                            <li>You must understand then()</li>
-                        </ul>
-                    </aside>
-                </section>
-            </section>
-
-
-            <section>
-                <section>
-                    <pre><code>
-var promise1 = readFilePromise('file1.txt');
-var wat = promise1.then(
-    function onFulfilled(data) { /* ... */ },
-    function onRejected(err) { /* ... */ }
-);
-                    </code></pre>
-                    <p>
-                        Q: What does then() return? <br/>
-                        (What is wat?)
-                    </p>
-                    <aside class="notes">
-                        <ul>
-                            <li>I've repeated the basic promise usage here</li>
-                            <li>Inserted "wat" variable & assigned it to then()</li>
-                            <li>What is wat?</li>
-                        </ul>
-                    </aside>
-                </section>
-                <section>
-                    <pre><code>
-var promise1 = readFilePromise('file1.txt');
-var promise2 = promise1.then(
-    function onFulfilled(data) { /* ... */ },
-    function onRejected(err) { /* ... */ }
-);
-                    </code></pre>
-                    <p>
-                        Q: What does then() return?
-                    </p>
-                    <p>
-                        A: A promise
-                    </p>
-
-                    <aside class="notes">
-                        <ul>
-                            <li>then() is a <b>promise</b> method that gives you a <b>promise</b></li>
-                            <li>This allows chaining</li>
-                            <li>then().then().then() ...</li>
-                            <li>The promise you get depends on what your handlers do</li>
-                            <li>...</li>
-                        </ul>
-                    </aside>
-                </section>
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <pre><code>
-var promise1 = readFilePromise('file1.txt');
-var promise2 = promise1.then(
-    function onFulfilled(data) { /* ... */ },
-    function onRejected(err) { /* ... */ }
-);
-                    </code></pre>
-                <p>1 of 3 things can happen in your handlers:</p>
-                <ol>
-                    <li class="fragment">
-                        Return a value <br/>
-                        then() will return a <b>promise</b> that has been fulfilled with that value.
-                    </li>
-                    <li class="fragment">
-                        Throw an exception <br/>
-                        then() will return a <b>promise</b> that has been rejected with that exception.
-                    </li>
-                    <li class="fragment">
-                        Return a promise <br/>
-                        then() will return that <b>promise</b>.
-                    </li>
-                </ol>
-                <aside class="notes">
-                    <ul>
-                        <li>I've created a varible "promise2" to hold the output of then()</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <h3>Reading 2 files sequentially</h3>
-                <pre><code data-trim="">
-readFilePromise('file1.txt').then(
-    function onFulfilled(data) {
-        console.log(data);
-        return readFilePromise('file2.txt');
-    }
-).then(
-    function onFulfilled(data) {console.log(data);}
-).catch(
-    function onRejected(err) {throw err;}
-);
-                </code></pre>
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <h3>Reading 2 files concurrently</h3>
-                    <pre><code data-trim="">
-var q = require('q'),
-    aggregatePromise,
-    thePromises = [readFilePromise('file1.txt'), readFilePromise('file2.txt')];
-
-aggregatePromise = q.all(thePromises);
-aggregatePromise.then(
-    function (values) {
-        // values[0] is file1.txt data
-        // values[1] is file2.txt data
-    }
-).catch(function onRejected(err) {throw err;});
-                    </code></pre>
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <h3>Converting Callbacks to Promises</h3>
-                <p class="center"><small>(The old way)</small></p>
-                <pre><code data-trim>
-var fs = require('fs'),
-    q  = require('q');
-
-function promiseReadFile(fileName) {
-    var dfd = q.defer();
-
-    fs.readFile(fileName, function (err, data) {
-        if (err) { return dfd.reject(err); }
-
-        dfd.resolve(data);
-    });
-
-    return dfd.promise;
-}
-                </code></pre>
-                <aside class="notes">
-                    <ul>
-                        <li>If your code is going to use promises, it's nice if all of it uses promises</li>
-                        <li>Node still has callbacks</li>
-                        <li>This is not the ES6 promises way.</li>
-                        <li>Top - bottom - middle</li>
-                        <li>This is how you will create a promise in the first couple
-                            of exercises.
-                        </li>
-                    </ul>
-                </aside>
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <h3>Converting Callbacks to Promises</h3>
-                <p class="center"><small>(The new way)</small></p>
-                <pre><code data-trim>
-function promiseReadFile(fileName) {
-    var promise = new Promise(
-        function (resolve, reject) {
-            fs.readFile(
-                'myfile.txt',
-                function (err, data) {
-                    if (err) {
-                        return reject(err);
-                    }
-                    resolve(data);
-                }
-            );
-        }
-    );
-    return promise;
-}
-                </code></pre>
-                <aside class="notes">
-                    <ul>
-                        <li>Call Promise constructor</li>
-                        <li>Function passed in is the "context" for resolving the promise</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <h3>We're Just Scratching the Surface</h3>
-
-                <ul>
-                    <li><code>promise.spread()</code></li>
-                    <li><code>promise.allSettled()</code></li>
-                    <li><code>promise.any()</code></li>
-                    <li><code>promise.race()</code></li>
-                    <li><code>promise.finally()</code></li>
-                    <li>etc. etc. etc.</li>
-                </ul>
-
-            </section>
-
-            <!--*************************************************************-->
-
-            <section>
-                <h3>Let's get started</h3>
-
-                    <p>To get setup:</p>
-                    <pre><code>
-$ mkdir promise-it-wont-hurt && cd promise-it-wont-hurt
-$ npm install q
-$ npm install -g promise-it-wont-hurt@latest
-                    </code></pre>
+                <h3>Resources</h3>
 
                 <p>
-                    To run: <code></code>
+                    This presentation:
+                    <a href="http://nodeschoolcle.github.io/presentations/">http://nodeschoolcle.github.io/presentations/</a>
                 </p>
-                <pre><code>
-$ promise-it-wont-hurt
-$ promise-it-wont-hurt run program.js
-$ promise-it-wont-hurt verfiy program.js
-                </code></pre>
 
                 <p>
-                    This presentation: <br/>
-                    <a href="http://bit.ly/nsclepresentations">http://bit.ly/nsclepresentations</a>
+                    <a href="https://github.com/denysdovhan/bash-handbook">bash-handbook</a>
                 </p>
-                
+
+                <p>
+                    <a href="http://stackoverflow.com/questions/6270440/simple-logical-operators-in-bash">
+                        A great Stack Overflow anser
+                    </a>
+                </p>
+
+                <p>
+                    <a href="http://unix.stackexchange.com/questions/131766/why-does-my-shell-script-choke-on-whitespace-or-other-special-characters">
+                        Always use double quotes around variable substitutions and command substitutions: "$foo", "$(foo)"
+                    </a>
+                </p>
+
+                <p>
+                    <a href="http://www.ibm.com/developerworks/library/l-bash-test/index.html">Demystify test, [, [[, ((, and if-then-else</a>
+                </p>
+
+                <p>
+                    <a href="https://www.tutorialspoint.com/execute_bash_online.php">Online Bash shell</a><br>
+                    (Complete with mock filesystem)
+                </p>
+
+
+                <section>
+                    <aside class="notes">
+                        <ul>
+
+                        </ul>
+                    </aside>
+                </section>
+
             </section>
 
             <!--*************************************************************-->
 
-            <section>
-                <h3>References</h3>
-                <ul>
-                    <li>
-                        <a href="https://github.com/kriskowal/q">The Q tutorial</a> (Kris Kowal)
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/watch?v=2d7s3spWAzo">Promises - Part 8 of Functional Programming in JavaScript</a> (Mattias P. Johansson)
-                    </li>
-                    <li>
-                        <a href="http://bevacqua.github.io/promisees/">Promisees</a> (visualization tool)
-                    </li>
-                    <li>
-                        <a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">We have a problem with promises</a> (Nolan Lawson)
-                    </li>
-                    <li>
-                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise on MDN</a>
-                    </li>
-                </ul>
-            </section>
+
+
+
+
+
 
             <!--*************************************************************-->
+
 
             <section>
                 <h1>Thank You!</h1>
@@ -790,11 +590,35 @@ $ promise-it-wont-hurt verfiy program.js
                 </div>
                 <div></div>
                 <div>
-                    <h5>
-                        Please fill out the survey to help us make NodeSchool CLE even better!
-                        <div><a href="http://bit.ly/CLE-NS-2">http://bit.ly/CLE-NS-2</a></div>
-                    </h5>
+                    <p class="center">
+                        Please register for meetups you are interested in, so we can prioritize them.
+                    </p>
                 </div>
+            </section>
+
+
+
+
+
+            <!--*************************************************************-->
+
+            <section>
+                <h3>Slide Template</h3>
+                <p class="center">
+                    <small>subtitle</small>
+                </p>
+                <pre><code data-noescape data-trim="" class="javascript">
+var a = 1;
+<mark>var b = 1;</mark>
+var c = 1;
+                    </code></pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+
             </section>
 
         </div>
@@ -898,8 +722,11 @@ alert('Resolved with value=' + value);
         // https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize(
                 {
-                    //width: 1920,
-                    //height: 958,
+                    width:  1920,
+                    height: 958,
+
+//                    width: "100%",
+//                    height: "100%",
 
                     controls: true,
                     progress: true,
