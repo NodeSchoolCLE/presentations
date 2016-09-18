@@ -349,7 +349,7 @@ chmod +x $1
 
             <section>
                 <section>
-                    <h2>What this workshopper will teach you</h2>
+                    <h2>This workshopper will teach you&hellip;</h2>
 
                     <div class="flex-row">
                         <div class="flex-item-dynamic"></div>
@@ -378,6 +378,7 @@ chmod +x $1
                         <ul>
                             <li>These are all fairly standard topics when learning a language</li>
                             <li>The workshopper does a fairly good job of covering these topics</li>
+                            <li>Bash is not w/o its quirks</li>
                             <li>I want to share the "gotchas"</li>
                         </ul>
                     </aside>
@@ -417,7 +418,7 @@ chmod +x $1
 
                         <tr>
                             <td><code>ctrl-r</code></td>
-                            <td>Start a backwards incremental search through history</td>
+                            <td>Incrementally search backwards through history</td>
                         </tr>
                     </table>
                 </section>
@@ -448,7 +449,6 @@ echo "Make $language great again."
                         <div class="flex-item-dynamic"></div>
                         <div class="flex-item-static">
                             <p>Multiple commands must be separated by "<code>;</code>" <br>
-                                <small>You can also string commands together using <code>&&</code> and <code>||</code>.</small>
                             </p>
                             <pre><code data-noescape data-trim="" class="bash">
 if [[ &hellip; ]]
@@ -462,6 +462,20 @@ if [[ &hellip; ]]; then
     &hellip;
 fi
                             </code></pre>
+
+                            <p>
+                                You can also string commands together using boolean operators <code>&&</code> and <code>||</code>
+                            </p>
+                            <table>
+                                <tr>
+                                    <td><code>cmd1 && cmd2 && cmd3</code></td>
+                                    <td>Execute commands until one fails</td>
+                                </tr>
+                                <tr>
+                                    <td><code>cmd1 || cmd2 || cmd3</code></td>
+                                    <td>Execute commands until one succeeds</td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="flex-item-dynamic"></div>
                     </div>
@@ -525,38 +539,30 @@ x=2;{ x=4; }; echo "$x"   # prints 4
 
             <section>
                 <h3>Resources</h3>
-
                 <p>
                     This presentation:
                     <a href="http://nodeschoolcle.github.io/presentations/">http://nodeschoolcle.github.io/presentations/</a>
                 </p>
-
                 <p>
                     <a href="https://github.com/denysdovhan/bash-handbook">bash-handbook</a>
                 </p>
-
                 <p>
                     <a href="http://stackoverflow.com/questions/6270440/simple-logical-operators-in-bash">
-                        A great Stack Overflow anser
+                        A great Stack Overflow answer about expansions and substitutions
                     </a>
                 </p>
-
                 <p>
                     <a href="http://unix.stackexchange.com/questions/131766/why-does-my-shell-script-choke-on-whitespace-or-other-special-characters">
                         Always use double quotes around variable substitutions and command substitutions: "$foo", "$(foo)"
                     </a>
                 </p>
-
                 <p>
                     <a href="http://www.ibm.com/developerworks/library/l-bash-test/index.html">Demystify test, [, [[, ((, and if-then-else</a>
                 </p>
-
                 <p>
-                    <a href="https://www.tutorialspoint.com/execute_bash_online.php">Online Bash shell</a><br>
+                    <a href="https://www.tutorialspoint.com/execute_bash_online.php">Online Bash shell</a>
                     (Complete with mock filesystem)
                 </p>
-
-
                 <section>
                     <aside class="notes">
                         <ul>
