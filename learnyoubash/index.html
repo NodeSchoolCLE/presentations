@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Learn You Bash</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../common/css/reveal.css">
+    <link rel="stylesheet" href="../common/css/theme/sky.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../common/lib/css/zenburn.css">
+
+    <style type="text/css">
+        /*.terminal { text-align: left; }
+         text editor styles */
+        .terminal {
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+            clear: both;
+            overflow: hidden;
+            -webkit-transition: all 0.5s ease-out;
+            -moz-transition: all 0.5s ease-out;
+            -ms-transition: all 0.5s ease-out;
+            -o-transition: all 0.5s ease-out;
+            transition: all 0.5s ease-out;
+        }
+
+        .terminal-title {
+            padding: 5px 0 !important;
+            font-family: "Lucida Grande", sans-serif !important;
+            font-size: 0.75em !important;
+            color: black;
+            text-align: center;
+            text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
+            background-color: #f8f8f8;
+            background-image: -webkit-linear-gradient(top, #e8e8e8, #bcbbbc);
+            background-image: -moz-linear-gradient(top, #e8e8e8, #bcbbbc);
+            background-image: linear-gradient(top, #e8e8e8, #bcbbbc);
+            box-shadow: inset rgba(255, 255, 255, 0.7) 0px 1px 1px;
+            border-bottom: #6a6a6a 1px solid;
+        }
+
+        .terminal-text {
+            height: 250px;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 10px;
+            color: #f0f0f0;
+            text-shadow: #000 0px 1px 0px;
+            font-family: "Consolas", "Courier New", "Courier";
+            font-size: 1.75em;
+            line-height: 1.40em;
+            font-weight: 500;
+            text-align: left;
+            overflow: hidden;
+            -webkit-transition: all 0.5s ease-out;
+            -moz-transition: all 0.5s ease-out;
+            -ms-transition: all 0.5s ease-out;
+            -o-transition: all 0.5s ease-out;
+            transition: all 0.5s ease-out;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="../common/css/layout.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../common/css/print/pdf.css' : '../common/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../common/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section>
+
+                <section>
+                    <h4>NodeSchool Cleveland</h4>
+                    <h4>September 19, 2016</h4>
+                    <h2>Learn You Bash</h2>
+                    <h6>
+                        <small>Thanks to our sponsors</small>
+                    </h6>
+                    <div class="flex-row">
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/leandog.png"/>
+                    </span>
+                        <span class="flex-item-dynamic">
+                        <img src="../common/images/rockwell.jpg"/>
+                    </span>
+                    </div>
+                </section>
+
+
+                <section>
+                    <h2>Before We Begin</h2>
+
+
+                    <div class="flex-item-dynamic flex-column">
+                        <p class="flex-item-static">
+                            Slides:
+                            <a href="http://bit.ly/nsclepresentations">http://bit.ly/nsclepresentations</a>
+                        </p>
+                        <p></p>
+
+                        <div class="flex-item-dynamic flex-row">
+                            <div class="flex-item-dynamic flex-column">
+                                <h3 class="left">1. Install Node.js</h3>
+                                <p>>= 4.0.0 (>= 5.1.0 for Windows)</p>
+                            </div>
+
+                            <div class="flex-item-dynamic">
+                                <h3 class="left">2. Install Bash</h3>
+                                <div>
+                                    Mac/Linux: You already have it
+                                </div>
+                                <div>
+                                    Windows:
+                                </div>
+                                <ul class="pad-left">
+                                    <li><a href="https://git-scm.com">Git Bash</a></li>
+                                    <li><a href="https://www.cygwin.com/">Cygwin</a></li>
+                                    <li>
+                                        <a href="https://msdn.microsoft.com/en-us/commandline/wsl/about">Bash on Ubuntu on Windows</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.tutorialspoint.com/execute_bash_online.php">Online Bash shell</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="flex-item-dynamic">
+                                <h3 class="left">3. Install workshopper</h3>
+                                <pre><code data-noescape data-trim="" class="bash">
+$ npm install -g learnyoubash
+                                    </code></pre>
+                            </div>
+
+                        </div>
+
+                        <div class="flex-item-static flex-row">
+                            <div class="flex-item-dynamic"></div>
+                            <img src="images/pizza4.gif" alt="pizza2">
+                            <div class="flex-item-dynamic"></div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+                <section data-background="images/hay.gif">
+                    <aside class="notes">
+                        <ul>
+                            <li>Thanks Lean Dog & Rockwell Automation</li>
+                            <li>Restrooms</li>
+                            <li>Food and drinks</li>
+                            <li>Why are we here?</li>
+                            <ul>
+                                <li>Pair</li>
+                                <li>Help those around you</li>
+                            </ul>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <p class="center"><small>Tonight's workshopper...</small></p>
+                    <h2>learnyoubash</h2>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Please interrupt</li>
+                        </ul>
+                    </aside>
+
+                </section>
+
+            </section>
+
+            <!--*************************************************************-->
+
+
+            <section>
+                <h1>Why Bash?</h1>
+
+                <div class="flex-row">
+
+                    <div class="flex-item-dynamic"></div>
+                    <div class="flex-item-static">
+
+                        <h3 class="left">1. Why not?</h3>
+                        <div class="flex-row">
+                            <div class="flex-item-static spacer-lg"></div>
+                            <div class="flex-item-static spacer-lg"></div>
+                            <p>
+                                Save time <br>
+                                Prevent mistakes <br>
+                                Document processes
+                            </p>
+                            <div class="flex-item-dynamic"></div>
+                        </div>
+
+                        <p></p>
+
+                        <h3 class="left">2. Because it is used</h3>
+
+                        <p></p>
+
+                        <h3 class="left">3. It is commonly available</h3>
+
+                    </div>
+                    <div class="flex-item-dynamic"></div>
+
+                </div>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Not directly related to Node.js</li>
+                        <li>You will run into it working in open source</li>
+                        <li>Another tool</li>
+                        <li>Please interrupt</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <!--*************************************************************-->
+
+            <section>
+
+                <section>
+                    <h1>The Basics</h1>
+                </section>
+
+
+                <section>
+                    <h3>
+                        Packaged as textual source code
+                    </h3>
+                    <div class="flex-row">
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <p>
+                                The <code>.bash</code> extension is typical
+                            </p>
+
+                            <p>
+                                Made executable by typical means&hellip;
+                            </p>
+                            <ol class="pad-left">
+                                <li>
+                                    Shebang line: <br>
+
+                                    <pre><code data-noescape data-trim="" class="bash">
+                                    #!/usr/bin/env bash
+                                    </code></pre>
+
+                                </li>
+                                <li>
+                                    Make the file executable: <br>
+                                    <pre><code data-noescape data-trim="" class="bash">
+                                    chmod +x my-file.bash
+                                    </code></pre>
+                                </li>
+                            </ol>
+
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+
+                    </div>
+
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Packaged as source code in a text file
+                                <ul>
+                                    <li>no compiling</li>
+                                    <li>immediate gratification</li>
+                                    <li>Insert normal interactive mode commands</li>
+                                </ul>
+                            </li>
+                            <li>.bash file extension is normal, but not required</li>
+                            <li>To make executable
+                                <ul>
+                                    <li>shebang line</li>
+                                    <li>file permission</li>
+                                </ul>
+                            </li>
+                            <li>
+                                on Windows, use PATHEXT environment variable
+                            </li>
+                        </ul>
+                    </aside>
+
+                </section>
+
+                <section>
+
+                    <p class="center">If we're going to do this...</p>
+                    <h2>let's get serious!</h2>
+                    <pre><code data-noescape data-trim="" class="bash">
+#!/usr/bin/env bash
+
+# file: create-bash.bash
+#
+# This script creates a new Bash script file.
+# It inserts the shebang line and sets the file to be executable.
+#
+# Arguments:
+# $1 The name of the file (typically has .bash extension)
+#
+printf '#!/usr/bin/env bash\n\necho "hello world"' > $1
+chmod +x $1
+                    </code></pre>
+
+                </section>
+
+            </section>
+
+
+            <section>
+                <section>
+                    <h2>This workshopper will teach you&hellip;</h2>
+
+                    <div class="flex-row">
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <ul>
+                                <li>Variables</li>
+                                <li>Arrays</li>
+                                <li>Shell expansions</li>
+                                <li>Streams</li>
+                                <li>Pipes</li>
+                            </ul>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <ul>
+                                <li>Lists of commands</li>
+                                <li>Conditionals</li>
+                                <li>Loops</li>
+                                <li>Functions</li>
+                                <li>Debugging</li>
+                            </ul>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>These are all fairly standard topics when learning a language</li>
+                            <li>The workshopper does a fairly good job of covering these topics</li>
+                            <li>Bash is not w/o its quirks</li>
+                            <li>I want to share the "gotchas"</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Interactive Mode</h2>
+                    <table>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code>history</code></td>
+                            <td>Shows a numbered list of the most recent commands</td>
+                        </tr>
+                        <tr>
+                            <td><code>!!</code></td>
+                            <td>Expands with the last command <br>Example: <code>sudo !!</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>!&lt;num&gt;</code></td>
+                            <td>Expands with the last command</td>
+                        </tr>
+                        <tr>
+                            <td><code>!str</code></td>
+                            <td>Expands with the last command starting with <code>str</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>!?str?</code></td>
+                            <td>Expands with the last command containing <code>str</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>^orig^repl^</code></td>
+                            <td>Re-executes the last command with <code>orig</code> replaced with <code>repl</code></td>
+                        </tr>
+
+                        <tr>
+                            <td><code>ctrl-r</code></td>
+                            <td>Incrementally search backwards through history</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h2>Variable Gotchas</h2>
+                    <div class="flex-row">
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <p>
+                                Variables are preceded with <code>$</code> when they are read, but not when assigned<br>
+                            <pre><code data-noescape data-trim="" class="bash">
+language="Bash"
+echo "Make $language great again."
+                    </code></pre>
+                            </p>
+                            <p>
+                                Also, spaces cannot be placed around the assignment operator (<code>=</code>).
+                            </p>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Multiple Commands on a line</h2>
+                    <div class="flex-row">
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <p>Multiple commands must be separated by "<code>;</code>" <br>
+                            </p>
+                            <pre><code data-noescape data-trim="" class="bash">
+if [[ &hellip; ]]
+then
+    &hellip;
+fi
+                            </code></pre>
+
+                            <pre><code data-noescape data-trim="" class="bash">
+if [[ &hellip; ]]; then
+    &hellip;
+fi
+                            </code></pre>
+
+                            <p>
+                                You can also string commands together using boolean operators <code>&&</code> and <code>||</code>
+                            </p>
+                            <table>
+                                <tr>
+                                    <td><code>cmd1 && cmd2 && cmd3</code></td>
+                                    <td>Execute commands until one fails</td>
+                                </tr>
+                                <tr>
+                                    <td><code>cmd1 || cmd2 || cmd3</code></td>
+                                    <td>Execute commands until one succeeds</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Expansion and Substitution</h2>
+
+                    <div class="flex-row">
+
+                        <div class="flex-item-dynamic"></div>
+                        <div class="flex-item-static">
+                            <table>
+                                <tr>
+                                    <td><code>(&hellip;)</code></td>
+                                    <td>
+                                        Subshell <br>
+                                        Contains commands that are run in a <strong>subprocess</strong>. <br>
+                                        Will not affect the parent process.
+                                        <pre><code data-noescape data-trim="" class="bash">
+x=2; (x=4); echo "$x"  # prints 2
+                                        </code></pre>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>$(&hellip;)</code></td>
+                                    <td>
+                                        Command substitution <br>
+                                        Same as using <code>`&hellip;`</code> (backticks) <br>
+                                        The output of executing the command is used as part of outer command
+                                        <pre><code data-noescape data-trim="" class="bash">
+echo "Hello, $(whoami)"
+                                        </code></pre>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>{ &hellip;; }</code></td>
+                                    <td>
+                                        Parse grouping <br>
+                                        How we normally think of parenthesis. <br>
+                                        Requires spaces around the braces and a closing semicolon.
+                                        <pre><code data-noescape data-trim="" class="bash">
+x=2;{ x=4; }; echo "$x"   # prints 4
+                                        </code></pre>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="flex-item-dynamic"></div>
+                    </div>
+
+                </section>
+
+                <section>
+                    <h2>Expansion and Substitution</h2>
+
+                    <div class="flex-item-dynamic"></div>
+                    <div class="flex-item-static">
+                        <table>
+                            <tr>
+                                <td><code>${VAR}</code></td>
+                                <td>
+                                    Parameter expansion <br>
+                                    Similar to <code>$VAR</code> but with possible transformations
+                                    <p></p>
+                                    <ul>
+                                        <li>Default values</li>
+                                        <li>Indirect variables</li>
+                                        <li>
+                                            <a href="http://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion">More</a></li>
+                                    </ul>
+                                    <pre><code data-noescape data-trim="" class="bash">
+A=${A:-hello}
+                                    </code></pre>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>((&hellip;))</code></td>
+                                <td>
+                                    Arithmetic instruction <br>
+                                    A computation on integers with syntax familiar to other programming languages.
+                                    <br>
+                                    Used primarily in assignments and conditionals.
+                                    <pre><code data-noescape data-trim="" class="bash">
+(( n += 1 ))  # Increment.
+                                    </code></pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>$((&hellip;))</code></td>
+                                <td>
+                                    Arithmetic expression <br>
+                                    Just expands the expression
+                                    <pre><code data-noescape data-trim="" class="bash">
+z=$((z+3))
+                                    </code></pre>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="flex-item-dynamic"></div>
+                </section>
+
+                <section>
+                    <h2>Expansion and Substitution</h2>
+
+                    <div class="flex-item-dynamic"></div>
+                    <div class="flex-item-static">
+
+
+                        <table class="flex-item-static">
+                            <tr>
+                                <td><code>[[ &hellip; ]]</code></td>
+                                <td>
+                                    Test expression <br>
+                                    You need a space inside and outside each bracket <br>
+                                    You need spaces around all operators
+                                    <pre><code data-noescape data-trim="" class="bash">
+if [[ "$varA" == 1 && ("$varB" == "t1" || "$varC" == "t2") ]]; then
+    &vellip;
+fi
+                                        </code></pre>
+
+                                    <div class="flex-row">
+                                        <div class="flex-item-dynamic"></div>
+                                        <div class="flex-item-dynamic border-right">
+                                            <h5 class="left">Numeric operators</h5>
+                                            <code>-eq</code>, <code>-ne</code>
+                                            <br>
+                                            <code>-lt</code>, <code>-le</code>
+                                            <br>
+                                            <code>-gt</code>, <code>-ge</code>
+                                        </div>
+                                        <div class="flex-item-dynamic border-right">
+                                            <h5 class="left">String operators</h5>
+                                            <code>==</code>, <code>!=</code>,
+                                            <br>
+                                            <code>-z</code> null (zero length)
+                                            <br>
+                                            <code>-n</code> not null <br>
+
+                                        </div>
+                                        <div class="flex-item-dynamic">
+                                            <h5 class="left">Filesystem operators</h5>
+                                            <div class="flex-row">
+                                                <div class="flex-item-static pad-right">
+                                                    <code>-e</code> exists <br>
+                                                    <code>-f</code> file exists <br>
+                                                    <code>-d</code> directory exists <br>
+                                                </div>
+                                                <div class="flex-item-static">
+                                                    <code>-h</code> symbolic link exists <br>
+                                                    <code>-s</code> not 0 size <br>
+                                                    <code>-r</code>, <code>-w</code>, <code>-x</code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-item-dynamic"></div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p>
+                            When using <code>==</code> and <code>!=</code>, the right side is a pattern.
+                            <code>[[ "$foo" == a* ]]</code> tests if <code>$foo</code> starts with "a" while
+                            <code>[[ "$foo" == "a*" ]]</code> tests if <code>$foo</code> is exactly "a*".
+                        </p>
+                        <p>
+                            <a href="http://unix.stackexchange.com/questions/131766/why-does-my-shell-script-choke-on-whitespace-or-other-special-characters">
+                                Always use double quotes
+                            </a>
+                            around variable substitutions.  If you don't,
+                            your script will not handle variables that contain whitespace or
+                            <code>\[*?</code> characters well.
+                        </p>
+
+
+                    </div>
+                    <div class="flex-item-dynamic"></div>
+                </section>
+
+            </section>
+
+            <section>
+                <h3>Other topics to explore</h3>
+
+                <div class="flex-row">
+
+                    <div class="flex-item-dynamic"></div>
+                    <div class="flex-item-dynamic">
+                        <div>
+                            Customizing your prompt (PS1)
+                        </div>
+                        <ul class="pad-left">
+                            <li>
+                                <a href="https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh">Git</a>
+                            </li>
+                        </ul>
+
+                        <div class="pad-top">
+                            Commonly used environment variables
+                        </div>
+                        <ul class="pad-left">
+                            <li><code>PATH</code></li>
+                            <li><code>EDITOR</code></li>
+                            <li><code>PS1</code>, <code>PS2</code>, <code>PS3</code>, <code>PS4</code></li>
+                            <li><code>PROMPT_COMMAND</code></li>
+                        </ul>
+
+                        <div class="pad-top">
+                            Aliases
+                        </div>
+                        <ul class="pad-left">
+                            <li>
+                                <a href="https://github.com/Bash-it/bash-it">Bash-it</a>
+                            </li>
+                        </ul>
+
+                        <div class="pad-top">
+                            Command line completion
+                        </div>
+
+                        <div class="pad-top">
+                            Commands
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!--*************************************************************-->
+
+            <section>
+                <h3>Resources</h3>
+                <p>
+                    This presentation:
+                    <a href="http://nodeschoolcle.github.io/presentations/">http://nodeschoolcle.github.io/presentations/</a>
+                </p>
+                <p>
+                    <a href="https://github.com/denysdovhan/bash-handbook">bash-handbook</a>
+                </p>
+                <p>
+                    <a href="http://stackoverflow.com/questions/6270440/simple-logical-operators-in-bash">
+                        A great Stack Overflow answer about expansions and substitutions
+                    </a>
+                </p>
+                <p>
+                    <a href="http://unix.stackexchange.com/questions/131766/why-does-my-shell-script-choke-on-whitespace-or-other-special-characters">
+                        Always use double quotes around variable substitutions and command substitutions: "$foo", "$(foo)"
+                    </a>
+                </p>
+                <p>
+                    <a href="http://www.ibm.com/developerworks/library/l-bash-test/index.html">Demystify test, [, [[, ((, and if-then-else</a>
+                </p>
+                <p>
+                    <a href="https://www.tutorialspoint.com/execute_bash_online.php">Online Bash shell</a>
+                    (Complete with mock filesystem)
+                </p>
+                <section>
+                    <aside class="notes">
+                        <ul>
+
+                        </ul>
+                    </aside>
+                </section>
+
+            </section>
+
+            <!--*************************************************************-->
+
+
+
+
+
+
+
+            <!--*************************************************************-->
+
+
+            <section>
+                <h1>Thank You!</h1>
+                <div class="flex-row">
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/leandog.png"/>
+                    </span>
+                    <span class="flex-item-dynamic">
+                        <img src="../common/images/rockwell.jpg"/>
+                    </span>
+                </div>
+                <div></div>
+                <div>
+                    <p class="center">
+                        Please register for meetups you are interested in, so we can prioritize them.
+                    </p>
+                </div>
+            </section>
+
+
+
+
+
+            <!--*************************************************************-->
+
+            <section>
+                <h3>Slide Template</h3>
+                <p class="center">
+                    <small>subtitle</small>
+                </p>
+                <pre><code data-noescape data-trim="" class="javascript">
+var a = 1;
+<mark>var b = 1;</mark>
+var c = 1;
+                    </code></pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+
+            </section>
+
+        </div>
+    </div>
+
+
+    <!--
+    Example: How to do a terminal window
+    <div class="terminal">
+        <div class="terminal-title">terminal - 86 x 29</div>
+        <div class="terminal-text type-text" title="npm init \n npm install &#45;&#45;save q \n npm install -g promise-it-wont-hurt \n"></div>
+    </div>-->
+
+    <!--*************************************************************-->
+
+    <!--
+    An example of using the Repl plugin:
+    -->
+
+    <!--
+    <section>
+        <pre><code class="eval language-javascript" contenteditable>
+function longOperation () {
+var delay = 3 * 1000,
+dfd = Q.defer();
+
+setTimeout(
+function () {
+    dfd.resolve(delay);
+}, delay);
+
+return dfd.promise;
+}
+
+var promise = longOperation();
+promise.then(
+function (value) {
+alert('Resolved with value=' + value);
+});
+        </code></pre>
+        <pre><code class="echo language-javascript"> </code></pre>
+    </section>
+    -->
+
+
+    <script src="../common/lib/js/head.min.js"></script>
+    <script src="../common/js/reveal.js"></script>
+
+    <script src="../common/js/jquery-1.11.3.min.js"></script>
+    <script src="../common/js/jquery.teletype.min.js"></script>
+    <script src="../common/js/q.js"></script>
+
+    <script>
+        /*
+
+         $( function() {
+         $( '.type-text' ).each( function() {
+         var items = $( this ).text();
+         $( this ).empty().attr( 'title', '' ).teletype( {
+         text: $.map( items.split( ';' ), $.trim ), // List of strings to output.
+         typeDelay: 10, // Minimum delay, in ms, between typing characters.
+         backDelay: 20, // Minimum delay, in ms, between deleting characters.
+         blinkSpeed: 1000, // Interval, in ms, that the cursor will flash.
+         cursor: '▋', // Character used to represent the cursor.
+         delay: 3000, // Time in ms to pause before deleting the current text.
+         preserve: false, // Prevent auto delete of the current string and begin outputting the next string.
+         prefix: '$ ', // Begin each string with this prefix value.
+         loop: 0, // Number of times to loop through the output strings, for unlimited use 0.
+         humanise: true // Add a random delay before each character to represent human interaction.
+         } );
+         } );
+         } );
+
+         */
+
+        Reveal.addEventListener(
+                'slidechanged', function (event) {
+                    // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+                    $(event.currentSlide).find(".type-text").each(
+                            function () {
+                                var items = $(this).attr('title');
+                                $(this).empty().teletype(
+                                        {
+                                            text:       $.map(
+                                                    items.split(';'), $.trim), // List of strings to output.
+                                            typeDelay:  40, // Minimum delay, in ms, between typing characters.
+                                            backDelay:  20, // Minimum delay, in ms, between deleting characters.
+                                            blinkSpeed: 1000, // Interval, in ms, that the cursor will flash.
+                                            cursor:     '▋', // Character used to represent the cursor.
+                                            delay:      3000, // Time in ms to pause before deleting the current text.
+                                            preserve:   true, // Prevent auto delete of the current string and begin outputting the next string.
+                                            prefix:     '$ ', // Begin each string with this prefix value.
+                                            loop:       1, // Number of times to loop through the output strings, for unlimited use 0.
+                                            humanise:   true // Add a random delay before each character to represent human interaction.
+                                        });
+                            });
+
+                });
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize(
+                {
+                    width:  1920,
+                    height: 958,
+
+//                    width: "100%",
+//                    height: "100%",
+
+                    controls: true,
+                    progress: true,
+                    history:  true,
+                    center:   true,
+
+                    transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                    // Optional reveal.js plugins
+                    dependencies: [
+                        {
+                            src:       'lib/js/classList.js',
+                            condition: function () { return !document.body.classList; }
+                        },
+                        {
+                            src:       '../common/plugin/markdown/marked.js',
+                            condition: function () { return !!document.querySelector('[data-markdown]'); }
+                        },
+                        {
+                            src:       '../common/plugin/markdown/markdown.js',
+                            condition: function () { return !!document.querySelector('[data-markdown]'); }
+                        },
+                        {
+                            src:       '../common/plugin/highlight/highlight.js',
+                            async:     true,
+                            condition: function () { return !!document.querySelector('pre code'); },
+                            callback:  function () { hljs.initHighlightingOnLoad(); }
+                        },
+                        {
+                            src:   '../common/plugin/zoom-js/zoom.js',
+                            async: true
+                        },
+                        {
+                            src:   '../common/plugin/notes/notes.js',
+                            async: true
+                        },
+                        {
+                            src:   '../common/plugin/repl/repl.js',
+                            async: true,
+                            condition: function () { return !!document.querySelector('pre code.eval'); }
+                        }
+                    ]
+                });
+
+        Reveal.configure(
+                {
+                    slideNumber: true
+                }
+        );
+
+    </script>
+
+</body>
+</html>
